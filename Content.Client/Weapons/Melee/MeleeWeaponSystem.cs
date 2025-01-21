@@ -140,6 +140,9 @@ public sealed partial class MeleeWeaponSystem : SharedMeleeWeaponSystem
             if (mousePos.MapId != attackerPos.MapId ||
                 (attackerPos.Position - mousePos.Position).Length() > weapon.Range)
             {
+                if (weapon.HeavyOnLightMiss)
+                    ClientHeavyAttack(entity, coordinates, weaponUid, weapon);
+
                 return;
             }
 
@@ -167,6 +170,12 @@ public sealed partial class MeleeWeaponSystem : SharedMeleeWeaponSystem
                 return;
             }
             // WD EDIT END
+
+            if (weapon.HeavyOnLightMiss && !CanDoLightAttack(entity, target, weapon, out _))
+            {
+                ClientHeavyAttack(entity, coordinates, weaponUid, weapon);
+                return;
+            }
 
             RaisePredictiveEvent(new LightAttackEvent(GetNetEntity(target), GetNetEntity(weaponUid), GetNetCoordinates(coordinates)));
         }

@@ -2,6 +2,7 @@ using System.Numerics;
 using Content.Client._White.Intent;
 using Content.Client.CombatMode;
 using Content.Client.Gameplay;
+using Content.Client.UserInterface.Screens;
 using Content.Client.UserInterface.Systems.Alerts.Controls;
 using Content.Client.UserInterface.Systems.Gameplay;
 using Content.Client.UserInterface.Systems.NativeActions.Controls;
@@ -25,7 +26,18 @@ public sealed class NativeActionsUIController : UIController, IOnStateEntered<Ga
     [UISystemDependency] private readonly CombatModeSystem _combatSystem = default!;
     [UISystemDependency] private readonly IntentSystem _intent = default!;
 
-    private NativeActionsGui? _nativeActionsGui;
+    public NativeActionsGui? NativeActions;
+
+    // And another hardcoded elements
+    public BoxContainer? MainAlertsContainer;
+
+    public BoxContainer? LeftTopAlertContainer;
+    public BoxContainer? LeftMiddleAlertContainer;
+    public BoxContainer? LeftBottomAlertContainer;
+
+    public BoxContainer? RightTopAlertContainer;
+    public BoxContainer? RightMiddleAlertContainer;
+    public BoxContainer? RightBottomAlertContainer;
 
     public override void Initialize()
     {
@@ -83,7 +95,7 @@ public sealed class NativeActionsUIController : UIController, IOnStateEntered<Ga
 
     public void TriggerIntent(int id)
     {
-        if (_nativeActionsGui == null)
+        if (NativeActions == null)
             return;
 
         var uid = _playerManager.LocalEntity;
@@ -95,8 +107,8 @@ public sealed class NativeActionsUIController : UIController, IOnStateEntered<Ga
 
         _intent.LocalToggleIntent((Shared._White.Intent.Intent) id);
 
-        var intentsContainer = _nativeActionsGui.IntentsContainer;
-        var intentsContainer2 = _nativeActionsGui.IntentsContainer2;
+        var intentsContainer = NativeActions.IntentsContainer;
+        var intentsContainer2 = NativeActions.IntentsContainer2;
 
         // FIXME: Looks not good...
         if (id <= 1)
@@ -131,10 +143,24 @@ public sealed class NativeActionsUIController : UIController, IOnStateEntered<Ga
         if (UIManager.ActiveScreen == null)
             return;
 
+        // Set actions
         if (UIManager.ActiveScreen.GetWidget<NativeActionsGui>() is { } nativeActions)
         {
-            if (_nativeActionsGui == null)
-                _nativeActionsGui = nativeActions;
+            if (NativeActions == null)
+                NativeActions = nativeActions;
+        }
+
+        switch (UIManager.ActiveScreen)
+        {
+            case SeparatedChatGameScreen separatedScreen:
+                MainAlertsContainer = separatedScreen.MainAlertsContainer;
+                LeftTopAlertContainer = separatedScreen.LeftTopAlertContainer;
+                LeftMiddleAlertContainer = separatedScreen.LeftMiddleAlertContainer;
+                LeftBottomAlertContainer = separatedScreen.LeftBottomAlertContainer;
+                RightTopAlertContainer = separatedScreen.RightTopAlertContainer;
+                RightMiddleAlertContainer = separatedScreen.RightMiddleAlertContainer;
+                RightBottomAlertContainer = separatedScreen.RightBottomAlertContainer;
+                break;
         }
     }
 

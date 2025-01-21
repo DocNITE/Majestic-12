@@ -1,38 +1,38 @@
 - type: speechSounds
   id: Bass
   saySound:
-    path: /Audio/_Finster/Voice/talk.ogg
+    path: /Audio/Voice/Talk/speak_4.ogg
   askSound:
-    path: /Audio/_Finster/Voice/talk.ogg
+    path: /Audio/Voice/Talk/speak_4_ask.ogg
   exclaimSound:
-    path: /Audio/_Finster/Voice/talk.ogg
+    path: /Audio/Voice/Talk/speak_4_exclaim.ogg
 
 - type: speechSounds
   id: Baritone
   saySound:
-    path: /Audio/_Finster/Voice/talk.ogg
+    path: /Audio/Voice/Talk/speak_1.ogg
   askSound:
-    path: /Audio/_Finster/Voice/talk.ogg
+    path: /Audio/Voice/Talk/speak_1_ask.ogg
   exclaimSound:
-    path: /Audio/_Finster/Voice/talk.ogg
+    path: /Audio/Voice/Talk/speak_1_exclaim.ogg
 
 - type: speechSounds
   id: Tenor
   saySound:
-    path: /Audio/_Finster/Voice/talk.ogg
+    path: /Audio/Voice/Talk/speak_3.ogg
   askSound:
-    path: /Audio/_Finster/Voice/talk.ogg
+    path: /Audio/Voice/Talk/speak_3_ask.ogg
   exclaimSound:
-    path: /Audio/_Finster/Voice/talk.ogg
+    path: /Audio/Voice/Talk/speak_3_exclaim.ogg
 
 - type: speechSounds
   id: Alto
   saySound:
-    path: /Audio/_Finster/Voice/talk.ogg
+    path: /Audio/Voice/Talk/speak_2.ogg
   askSound:
-    path: /Audio/_Finster/Voice/talk.ogg
+    path: /Audio/Voice/Talk/speak_2_ask.ogg
   exclaimSound:
-    path: /Audio/_Finster/Voice/talk.ogg
+    path: /Audio/Voice/Talk/speak_2_exclaim.ogg
 
 - type: speechSounds
   id: Squeak

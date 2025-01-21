@@ -1,6 +1,7 @@
 using System.Numerics;
 using Content.Shared.Access.Components;
 using Content.Shared.Access.Systems;
+using Content.Shared.CombatMode;
 using Content.Shared.Whitelist;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
@@ -24,6 +25,19 @@ public sealed class RulesSystem : EntitySystem
             switch (rule)
             {
                 case AlwaysTrueRule:
+                    break;
+                case CombatMode combatRule:
+                    if (TryComp<CombatModeComponent>(uid, out var combatMode))
+                    {
+                        if (combatMode.IsInCombatMode == combatRule.State)
+                            continue;
+                        else
+                            return false;
+                    }
+                    else
+                    {
+                        continue;
+                    }
                     break;
                 case GridInRangeRule griddy:
                 {

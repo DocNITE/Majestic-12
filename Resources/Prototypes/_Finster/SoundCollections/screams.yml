@@ -1,0 +1,13 @@
+- type: soundCollection
+  id: DeathnetMaleScreams
+  files:
+    - /Audio/_Finster/Voice/deathnet/Screams_Male_1.ogg
+    - /Audio/_Finster/Voice/deathnet/Screams_Male_2.ogg
+    - /Audio/_Finster/Voice/deathnet/Screams_Male_3.ogg
+
+- type: soundCollection
+  id: DeathnetFemaleScreams
+  files:
+    - /Audio/_Finster/Voice/deathnet/Screams_Woman_1.ogg
+    - /Audio/_Finster/Voice/deathnet/Screams_Woman_2.ogg
+    - /Audio/_Finster/Voice/deathnet/Screams_Woman_3.ogg

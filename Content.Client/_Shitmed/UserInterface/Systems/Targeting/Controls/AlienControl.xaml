@@ -1,0 +1,109 @@
+<controls:AlienControl
+    xmlns="https://spacestation14.io"
+    xmlns:controls="clr-namespace:Content.Client._Shitmed.UserInterface.Systems.Targeting.Controls"
+    Name="AlienDoll"
+    VerticalExpand="True"
+    VerticalAlignment="Center"
+    HorizontalAlignment="Center"
+    SetSize="64 128">
+            <PanelContainer
+                SetSize="64 128"
+                Name="Panel"
+                Margin="0 0 0 0"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center">
+
+                <TextureButton
+                    Name="RightArmButton"
+                    Access="Public"
+                    MinSize="16 46"
+                    Margin="8 20 0 0"
+                    VerticalAlignment="Top"
+                    HorizontalAlignment="Left"/>
+
+                <TextureButton
+                    Name="RightHandButton"
+                    Access="Public"
+                    MinSize="12 20"
+                    Margin="4 68 0 0"
+                    VerticalAlignment="Top"
+                    HorizontalAlignment="Left"/>
+
+                <TextureButton
+                    Name="HeadButton"
+                    Access="Public"
+                    MinSize="12 22"
+                    Margin="26 0 0 0"
+                    VerticalAlignment="Top"
+                    HorizontalAlignment="Left"/>
+
+                <TextureButton
+                    Name="ChestButton"
+                    Access="Public"
+                    MinSize="16 26"
+                    Margin="24 20 0 0"
+                    VerticalAlignment="Top"
+                    HorizontalAlignment="Left"/>
+
+                <TextureButton
+                    Name="GroinButton"
+                    Access="Public"
+                    MinSize="24 24"
+                    Margin="20 46 0 0"
+                    VerticalAlignment="Top"
+                    HorizontalAlignment="Left"/>
+
+                <TextureButton
+                    Name="LeftLegButton"
+                    Access="Public"
+                    MinSize="10 56"
+                    Margin="34 62 0 0"
+                    VerticalAlignment="Top"
+                    HorizontalAlignment="Left"/>
+
+                <TextureButton
+                    Name="LeftFootButton"
+                    Access="Public"
+                    MinSize="16 10"
+                    Margin="34 116 0 0"
+                    VerticalAlignment="Top"
+                    HorizontalAlignment="Left"/>
+
+
+                <TextureButton
+                    Name="RightLegButton"
+                    Access="Public"
+                    MinSize="10 56"
+                    Margin="20 62 0 0"
+                    VerticalAlignment="Top"
+                    HorizontalAlignment="Left"/>
+
+
+                <TextureButton
+                    Name="RightFootButton"
+                    Access="Public"
+                    MinSize="16 10"
+                    Margin="16 116 0 0"
+                    VerticalAlignment="Top"
+                    HorizontalAlignment="Left"/>
+
+
+
+                <TextureButton
+                    Name="LeftArmButton"
+                    Access="Public"
+                    MinSize="16 46"
+                    Margin="40 20 0 0"
+                    VerticalAlignment="Top"
+                    HorizontalAlignment="Left"/>
+
+                <TextureButton
+                    Name="LeftHandButton"
+                    Access="Public"
+                    MinSize="12 20"
+                    Margin="48 68 0 0"
+                    VerticalAlignment="Top"
+                    HorizontalAlignment="Left"/>
+
+            </PanelContainer>
+</controls:AlienControl>

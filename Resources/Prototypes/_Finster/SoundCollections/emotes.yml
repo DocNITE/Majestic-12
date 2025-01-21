@@ -1,0 +1,40 @@
+- type: soundCollection
+  id: DeathnetMaleLaugh
+  files:
+    - /Audio/_Finster/Voice/deathnet/laugh.ogg
+    - /Audio/_Finster/Voice/deathnet/laugh2.ogg
+    - /Audio/_Finster/Voice/deathnet/laugh3.ogg
+    - /Audio/_Finster/Voice/deathnet/laugh4.ogg
+
+- type: soundCollection
+  id: DeathnetFemaleLaugh
+  files:
+    - /Audio/_Finster/Voice/deathnet/femlaugh.ogg
+    - /Audio/_Finster/Voice/deathnet/femlaugh2.ogg
+    - /Audio/_Finster/Voice/deathnet/female_laugh_2.ogg
+
+- type: soundCollection
+  id: DeathnetMaleSigh
+  files:
+    - /Audio/Voice/Human/male_sigh.ogg
+
+- type: soundCollection
+  id: DeathnetFemaleSigh
+  files:
+    - /Audio/Voice/Human/female_sigh.ogg
+
+- type: soundCollection
+  id: DeathnetMaleCry
+  files:
+    - /Audio/Voice/Human/cry_male_1.ogg
+    - /Audio/Voice/Human/cry_male_2.ogg
+    - /Audio/Voice/Human/cry_male_3.ogg
+    - /Audio/Voice/Human/cry_male_4.ogg
+
+- type: soundCollection
+  id: DeathnetFemaleCry
+  files:
+    - /Audio/Voice/Human/cry_female_1.ogg
+    - /Audio/Voice/Human/cry_female_2.ogg
+    - /Audio/Voice/Human/cry_female_3.ogg
+    - /Audio/Voice/Human/cry_female_4.ogg

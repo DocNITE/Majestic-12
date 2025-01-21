@@ -12,12 +12,14 @@
 
 - type: alertCategory
   id: Health
+  group: MainInfo
 
 - type: alertCategory
   id: Internals
 
 - type: alertCategory
   id: Stamina
+  group: MainInfo
 
 - type: alertCategory
   id: Piloting
@@ -33,27 +35,36 @@
 
 - type: alertCategory
   id: Battery
+  #group: MainInfo
 
 - type: alertCategory
   id: Mood
+  group: MainInfo
 
 - type: alertCategory
   id: NACombatMode
+  group: NativeActions
 
 - type: alertCategory
   id: NAWalking
+  group: NativeActions
 
 - type: alertCategory
   id: NALaying
+  group: NativeActions
 
 - type: alertCategory
   id: IntentHelp
+  group: Intents
 
 - type: alertCategory
   id: IntentDisarm
+  group: Intents
 
 - type: alertCategory
   id: IntentGrab
+  group: Intents
 
 - type: alertCategory
   id: IntentHarm
+  group: Intents

@@ -44,10 +44,12 @@ public sealed class ActionButton : Control, IEntityControl
     public readonly PanelContainer HighlightRect;
     private readonly TextureRect _bigActionIcon;
     private readonly TextureRect _smallActionIcon;
-    public readonly Label Label;
+    public readonly RichTextLabel Label;
     public readonly CooldownGraphic Cooldown;
     private readonly SpriteView _smallItemSpriteView;
     private readonly SpriteView _bigItemSpriteView;
+    private readonly BoxContainer _boxContainerMain;
+    private readonly PanelContainer _mainPanel;
 
     private Texture? _buttonBackgroundTexture;
 
@@ -71,12 +73,13 @@ public sealed class ActionButton : Control, IEntityControl
         Button = new TextureRect
         {
             Name = "Button",
-            TextureScale = new Vector2(2, 2)
+            TextureScale = new Vector2(1, 1)
         };
         HighlightRect = new PanelContainer
         {
             StyleClasses = {StyleLora.StyleClassHandSlotHighlight},
             MinSize = new Vector2(32, 32),
+            MaxSize = new Vector2(32, 32),
             Visible = false
         };
         _bigActionIcon = new TextureRect
@@ -93,11 +96,12 @@ public sealed class ActionButton : Control, IEntityControl
             Stretch = StretchMode.Scale,
             Visible = false
         };
-        Label = new Label
+        Label = new RichTextLabel
         {
             Name = "Label",
-            HorizontalAlignment = HAlignment.Left,
-            VerticalAlignment = VAlignment.Top,
+            Visible = true,
+            //HorizontalAlignment = HAlignment.Left,
+            VerticalAlignment = VAlignment.Center,
             Margin = new Thickness(5, 0, 0, 0)
         };
         _bigItemSpriteView = new SpriteView
@@ -105,8 +109,9 @@ public sealed class ActionButton : Control, IEntityControl
             Name = "Big Sprite",
             HorizontalExpand = true,
             VerticalExpand = true,
-            Scale = new Vector2(2, 2),
-            SetSize = new Vector2(64, 64),
+            Scale = new Vector2(1, 1),
+            SetSize = new Vector2(32, 32),
+            MaxSize = new Vector2(32, 32),
             Visible = false,
             OverrideDirection = Direction.South,
         };
@@ -118,13 +123,22 @@ public sealed class ActionButton : Control, IEntityControl
             Visible = false,
             OverrideDirection = Direction.South,
         };
+        _boxContainerMain = new BoxContainer
+        {
+            Orientation = LayoutOrientation.Horizontal,
+        };
+        _mainPanel = new PanelContainer
+        {
+            MinSize = new Vector2(32, 32),
+            MaxSize = new Vector2(32, 32),
+        };
         // padding to the left of the small icon
         var paddingBoxItemIcon = new BoxContainer
         {
             Orientation = LayoutOrientation.Horizontal,
             HorizontalExpand = true,
             VerticalExpand = true,
-            MinSize = new Vector2(64, 64)
+            MinSize = new Vector2(32, 32)
         };
         paddingBoxItemIcon.AddChild(new Control()
         {
@@ -140,13 +154,16 @@ public sealed class ActionButton : Control, IEntityControl
         });
         Cooldown = new CooldownGraphic {Visible = false};
 
-        AddChild(Button);
-        AddChild(_bigActionIcon);
-        AddChild(_bigItemSpriteView);
-        AddChild(HighlightRect);
-        AddChild(Label);
-        AddChild(Cooldown);
-        AddChild(paddingBoxItemIcon);
+        AddChild(_boxContainerMain);
+        _boxContainerMain.AddChild(_mainPanel);
+        _boxContainerMain.AddChild(Label);
+
+        _mainPanel.AddChild(Button);
+        _mainPanel.AddChild(_bigActionIcon);
+        _mainPanel.AddChild(_bigItemSpriteView);
+        _mainPanel.AddChild(HighlightRect);
+        _mainPanel.AddChild(Cooldown);
+        _mainPanel.AddChild(paddingBoxItemIcon);
 
         Button.Modulate = new Color(255, 255, 255, 150);
 
@@ -156,13 +173,15 @@ public sealed class ActionButton : Control, IEntityControl
         OnKeyBindUp += OnUnpressed;
 
         TooltipSupplier = SupplyTooltip;
+
+        UpdateLabel();
     }
 
     protected override void OnThemeUpdated()
     {
         base.OnThemeUpdated();
         _buttonBackgroundTexture = Theme.ResolveTexture("SlotBackground");
-        Label.FontColorOverride = Theme.ResolveColorOrSpecified("whiteText");
+        //Label.FontColorOverride = Theme.ResolveColorOrSpecified("whiteText");
     }
 
     private void OnPressed(GUIBoundKeyEventArgs args)
@@ -185,6 +204,17 @@ public sealed class ActionButton : Control, IEntityControl
             Depress(args, false);
 
         ActionUnpressed?.Invoke(args, this);
+    }
+
+    private void UpdateLabel()
+    {
+        if (!_entities.TryGetComponent(ActionId, out MetaDataComponent? metadata))
+            return;
+
+        var name = FormattedMessage.FromMarkupPermissive(Loc.GetString(metadata.EntityName));
+        var decr = FormattedMessage.FromMarkupPermissive(Loc.GetString(metadata.EntityDescription));
+
+        Label.SetMessage(name);
     }
 
     private Control? SupplyTooltip(Control sender)
@@ -329,7 +359,8 @@ public sealed class ActionButton : Control, IEntityControl
     {
         ActionId = actionId;
         system.TryGetActionData(actionId, out _action);
-        Label.Visible = actionId != null;
+        //Label.Visible = actionId != null;
+        UpdateLabel();
         UpdateIcons();
     }
 
@@ -339,7 +370,7 @@ public sealed class ActionButton : Control, IEntityControl
         _action = null;
         Cooldown.Visible = false;
         Cooldown.Progress = 1;
-        Label.Visible = false;
+        //Label.Visible = false;
         UpdateIcons();
     }
 

@@ -1,0 +1,71 @@
+- type: emoteSounds
+  id: DeathnetMaleHuman
+  params:
+    variation: 0.125
+  sounds:
+    Scream:
+      collection: DeathnetMaleScreams
+    Laugh:
+      collection: DeathnetMaleLaugh
+    Sneeze:
+      collection: MaleSneezes
+    Cough:
+      collection: MaleCoughs
+    CatMeow:
+      collection: CatMeows
+    CatHisses:
+      collection: CatHisses
+    MonkeyScreeches:
+      collection: MonkeyScreeches
+    RobotBeep:
+      collection: RobotBeeps
+    Yawn:
+      collection: MaleYawn
+    Snore:
+      collection: Snores
+    Honk:
+      collection: BikeHorn
+    Sigh:
+      collection: DeathnetMaleSigh
+    Crying:
+      collection: DeathnetMaleCry
+    Whistle:
+      collection: Whistles
+    Weh:
+      collection: Weh
+
+- type: emoteSounds
+  id: DeathnetFemaleHuman
+  params:
+    variation: 0.125
+  sounds:
+    Scream:
+      collection: DeathnetFemaleScreams
+    Laugh:
+      collection: DeathnetFemaleLaugh
+    Sneeze:
+      collection: FemaleSneezes
+    Cough:
+      collection: FemaleCoughs
+    CatMeow:
+      collection: CatMeows
+    CatHisses:
+      collection: CatHisses
+    MonkeyScreeches:
+      collection: MonkeyScreeches
+    RobotBeep:
+      collection: RobotBeeps
+    Yawn:
+      collection: FemaleYawn
+    Snore:
+      collection: Snores
+    Honk:
+      collection: CluwneHorn
+    Sigh:
+      collection: DeathnetFemaleSigh
+    Crying:
+      collection: DeathnetFemaleCry
+    Whistle:
+      collection: Whistles
+    Weh:
+      collection: Weh

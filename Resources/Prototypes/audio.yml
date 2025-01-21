@@ -3,7 +3,7 @@
   sound:
     params:
       volume: -12
-    collection: AmbienceCaveCity
+    collection: AmbienceTown
   rules: OnMapGrid
   fadeIn: false
   interruptable: true
@@ -23,6 +23,20 @@
   minCooldownTime: 0
   maxCooldownTime: 0
   priority: 1
+
+## Combat Mode Theme
+- type: ambientMusic
+  id: CombatMode
+  sound:
+    params:
+      volume: -10
+    collection: AmbienceCombatMode
+  #fadeIn: true
+  interruptable: true
+  rules: InCombatMode
+  minCooldownTime: 0
+  maxCooldownTime: 0
+  priority: 10
 
 ## Fallback if nothing else found
 - type: ambientMusic
@@ -51,26 +65,43 @@
 - type: soundCollection
   id: AmbienceGeneral
   files:
-    - /Audio/_Finster/Ambience/townstreets.ogg
+    - /Audio/_Finster/Ambience/general.ogg
 
 - type: soundCollection
   id: AmbienceSpace
   files:
     - /Audio/_Finster/Ambience/magiciantower.ogg
+    - /Audio/_Finster/Ambience/stalker_red_forest.ogg
+
+- type: soundCollection
+  id: AmbienceCombatMode
+  files:
+    - /Audio/_Finster/Ambience/dreamweb-like-killing-hitler.ogg
+    - /Audio/_Finster/Ambience/combat_vamp2.ogg
 
 # Rules
 - type: rules
   id: AlwaysTrue
   rules:
+    - !type:CombatMode
+      state: false
     - !type:AlwaysTrueRule
 
 - type: rules
   id: InSpace
   rules:
+    - !type:CombatMode
+      state: false
     - !type:InSpaceRule
     - !type:GridInRangeRule
       inverted: true
       range: 3
+
+- type: rules
+  id: InCombatMode
+  rules:
+    - !type:CombatMode
+      state: true
 
 # TODO
 - type: rules
@@ -143,4 +174,6 @@
 - type: rules
   id: OnMapGrid
   rules:
+    - !type:CombatMode
+      state: false
     - !type:OnMapGridRule

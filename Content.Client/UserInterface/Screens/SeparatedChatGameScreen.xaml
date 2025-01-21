@@ -11,7 +11,7 @@
     xmlns:inventory="clr-namespace:Content.Client.UserInterface.Systems.Inventory.Widgets"
     xmlns:targeting="clr-namespace:Content.Client._Shitmed.UserInterface.Systems.Targeting.Widgets"
     xmlns:nactions="clr-namespace:Content.Client.UserInterface.Systems.NativeActions.Widgets"
-    xmlns:us="clr-namespace:Content.Client._Sunrise.UserActions"
+    xmlns:us="clr-namespace:Content.Client._Finster.UserActions"
     Name="SeparatedChatHud"
     VerticalExpand="False"
     VerticalAlignment="Bottom"
@@ -23,19 +23,69 @@
                     <graphics:StyleBoxFlat BackgroundColor="#191919" />
                 </controls:CustomPanelContainer.PanelOverride>
                 <BoxContainer Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0 0 0 0">
-                    <TextureRect
-                            Name="LogoBackground"
+                    <PanelContainer>
+                        <TextureRect
+                            Name="MainInfoBackground"
                             Access="Public"
-                            TexturePath="/Textures/Interface/LoraAshen/logo.png"
                             Stretch="KeepAspectCentered"
                             SetSize="192 64"
                             Margin="0 0 0 0"
                             VerticalAlignment="Top"
                             HorizontalAlignment="Center"
-                    />
-                    <targeting:TargetingControl Name="Targeting" Access="Protected" Margin="0 0 0 32" />
+                        />
+                        <BoxContainer Name="MainAlertsContainer" Access="Public" Orientation="Horizontal" Margin="0 0 0 0" />
+                    </PanelContainer>
+                    <!--
+                    <GridContainer Columns="2" Rows="2" Margin="0 0 0 0" VSeparationOverride="0" HSeparationOverride="0" HorizontalAlignment="Center" VerticalAlignment="Center" >
+                    -->
+                    <controls:CustomPanelContainer Name="CharacterInfoPanel" Access="Public" VerticalExpand="True" HorizontalExpand="False" MinWidth="192" MaxWidth="192">
+                        <controls:CustomPanelContainer.PanelOverride>
+                            <graphics:StyleBoxFlat BackgroundColor="#050505" />
+                        </controls:CustomPanelContainer.PanelOverride>
+                        <TextureRect
+                            Name="TargetingBackground"
+                            Access="Public"
+                            Stretch="KeepAspectCentered"
+                            SetSize="64 128"
+                            Margin="0 0 0 0"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Center"
+                        />
+                        <targeting:TargetingControl Name="Targeting" Access="Protected" Margin="0 0 0 0" />
+                        <PanelContainer>
+                            <!-- Left -->
+                            <PanelContainer HorizontalExpand="True" MinWidth="64" MaxWidth="64" HorizontalAlignment="Left" VerticalAlignment="Center">
+                                <BoxContainer Orientation="Vertical">
+                                    <PanelContainer HorizontalExpand="True" MinHeight="32" MaxHeight="32" HorizontalAlignment="Center" VerticalAlignment="Top">
+                                        <BoxContainer Name="LeftTopAlertContainer" Access="Public" Orientation="Horizontal" HorizontalAlignment="Center"/>
+                                    </PanelContainer>
+                                    <PanelContainer HorizontalExpand="True" MinHeight="32" MaxHeight="32" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                        <BoxContainer Name="LeftMiddleAlertContainer" Access="Public" Orientation="Horizontal" HorizontalAlignment="Center"/>
+                                    </PanelContainer>
+                                    <PanelContainer HorizontalExpand="True" MinHeight="32" MaxHeight="32" HorizontalAlignment="Center" VerticalAlignment="Bottom">
+                                        <BoxContainer Name="LeftBottomAlertContainer" Access="Public" Orientation="Horizontal" HorizontalAlignment="Center"/>
+                                    </PanelContainer>
+                                </BoxContainer>
+                            </PanelContainer>
+                            <!-- Right -->
+                            <PanelContainer HorizontalExpand="True" MinWidth="64" MaxWidth="64" HorizontalAlignment="Right" VerticalAlignment="Center">
+                                <BoxContainer Orientation="Vertical">
+                                    <PanelContainer HorizontalExpand="True" MinHeight="32" MaxHeight="32" HorizontalAlignment="Center" VerticalAlignment="Top">
+                                        <BoxContainer Name="RightTopAlertContainer" Access="Public" Orientation="Horizontal" HorizontalAlignment="Center"/>
+                                    </PanelContainer>
+                                    <PanelContainer HorizontalExpand="True" MinHeight="32" MaxHeight="32" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                        <BoxContainer Name="RightMiddleAlertContainer" Access="Public" Orientation="Horizontal" HorizontalAlignment="Center"/>
+                                    </PanelContainer>
+                                    <PanelContainer HorizontalExpand="True" MinHeight="32" MaxHeight="32" HorizontalAlignment="Center" VerticalAlignment="Bottom">
+                                        <BoxContainer Name="RightBottomAlertContainer" Access="Public" Orientation="Horizontal" HorizontalAlignment="Center"/>
+                                    </PanelContainer>
+                                </BoxContainer>
+                            </PanelContainer>
+                        </PanelContainer>
+                    </controls:CustomPanelContainer>
                     <hotbar:HotbarGui Name="Hotbar" Access="Protected"/>
                     <inventory:InventoryGui Name="Inventory" Access="Protected"/>
+                    <alerts:AlertsUI Name="Alerts" Access="Protected" />
                 </BoxContainer>
                 <BoxContainer Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0 0 0 0">
                     <nactions:NativeActionsGui Name="NativeActions" Access="Public"/>
@@ -51,21 +101,16 @@
         </BoxContainer>
         <PanelContainer HorizontalExpand="True" MinWidth="400">
             <PanelContainer.PanelOverride>
-                <graphics:StyleBoxFlat BackgroundColor="#191919" />
+                <graphics:StyleBoxFlat BackgroundColor="#191919"
+                                       BorderColor="#3C3C3C"
+                                       BorderThickness="2 2 2 2"/>
             </PanelContainer.PanelOverride>
-
             <BoxContainer Orientation="Horizontal" HorizontalExpand="True">
-                <controls:CustomPanelContainer Name="RightPanel" Access="Public" VerticalExpand="True" HorizontalExpand="False" MinWidth="64" MaxWidth="64">
-                    <controls:CustomPanelContainer.PanelOverride>
-                        <graphics:StyleBoxFlat BackgroundColor="#191919" />
-                    </controls:CustomPanelContainer.PanelOverride>
-                    <BoxContainer Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
-                        <alerts:AlertsUI Name="Alerts" Access="Protected" />
-                    </BoxContainer>
-                </controls:CustomPanelContainer>
-                <BoxContainer Orientation="Vertical" HorizontalExpand="True" SeparationOverride="0" Margin="0">
-                    <us:UserActionsPanel Name="UserActionsPanel" Access="Public"></us:UserActionsPanel>
-                    <chat:ChatBox VerticalExpand="True" HorizontalExpand="True" Name="Chat" Access="Protected" MinSize="0 0"/>
+                <BoxContainer Orientation="Vertical" HorizontalExpand="True" SeparationOverride="10" Margin="10">
+                    <SplitContainer State="Auto" VerticalExpand="True" Orientation="Vertical">
+                        <us:UserActionsPanel Name="UserActionsPanel" Access="Public"></us:UserActionsPanel>
+                        <chat:ChatBox VerticalExpand="True" HorizontalExpand="True" Name="Chat" Access="Protected" MinSize="0 0"/>
+                    </SplitContainer>
                     <menuBar:GameTopMenuBar Name="TopBar" HorizontalExpand="True" Access="Protected" />
                 </BoxContainer>
             </BoxContainer>

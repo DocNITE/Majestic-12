@@ -706,9 +706,9 @@
   - 1.0
   isSubfloor: true
   footstepSounds:
-    collection: FootstepBlood
+    collection: FootstepMud
   barestepSounds:
-    collection: FootstepBlood
+    collection: FootstepMud
   heatCapacity: 10000
   weather: true
   indestructible: true
@@ -725,9 +725,9 @@
   - 1.0
   isSubfloor: true
   footstepSounds:
-    collection: FootstepBlood
+    collection: FootstepMud
   barestepSounds:
-    collection: FootstepBlood
+    collection: FootstepMud
   heatCapacity: 10000
   weather: true
   indestructible: true
@@ -744,9 +744,9 @@
   - 1.0
   isSubfloor: true
   footstepSounds:
-    collection: FootstepBlood
+    collection: FootstepMud
   barestepSounds:
-    collection: FootstepBlood
+    collection: FootstepMud
   heatCapacity: 10000
   weather: true
   indestructible: true

@@ -45,7 +45,7 @@ namespace Content.Client.UserInterface.Systems.Alerts.Controls
         /// </summary>
         /// <param name="alert">alert to display</param>
         /// <param name="severity">severity of alert, null if alert doesn't have severity levels</param>
-        public AlertControl(AlertPrototype alert, short? severity, float iconScale = 2, float size = 32)
+        public AlertControl(AlertPrototype alert, short? severity, float iconScale = 2, float size = 16, float spriteScale = 0.5f)
         {
             _gameTiming = IoCManager.Resolve<IGameTiming>();
             _entityManager = IoCManager.Resolve<IEntityManager>();
@@ -59,6 +59,8 @@ namespace Content.Client.UserInterface.Systems.Alerts.Controls
                 var icon = Alert.GetIcon(_severity);
                 if (sprite.LayerMapTryGet(AlertVisualLayers.Base, out var layer))
                     sprite.LayerSetSprite(layer, icon);
+
+                sprite.Scale = new Vector2(spriteScale, spriteScale);
             }
 
             _icon = new SpriteView

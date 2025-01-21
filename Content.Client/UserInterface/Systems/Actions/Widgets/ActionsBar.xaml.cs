@@ -27,7 +27,7 @@ public sealed partial class ActionsBar : UIWidget
             var boundKey = keys[index];
             var button = new ActionButton(_entity);
             button.KeyBind = boundKey;
-            button.Label.Text = index.ToString();
+            //button.Label.Text = index.ToString();
             return button;
         }
     }

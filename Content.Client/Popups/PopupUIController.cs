@@ -26,9 +26,9 @@ public sealed class PopupUIController : UIController, IOnStateEntered<GameplaySt
         base.Initialize();
         var cache = IoCManager.Resolve<IResourceCache>();
 
-        _smallFont = new VectorFont(cache.GetResource<FontResource>("/Fonts/Lora/Lora-Italic.ttf"), 10);
-        _mediumFont = new VectorFont(cache.GetResource<FontResource>("/Fonts/Lora/Lora-Italic.ttf"), 12);
-        _largeFont = new VectorFont(cache.GetResource<FontResource>("/Fonts/Lora/Lora-BoldItalic.ttf"), 14);
+        _smallFont = new VectorFont(cache.GetResource<FontResource>("/Fonts/IBMPlexSans/IBMPlexSans-Italic.ttf"), 10);
+        _mediumFont = new VectorFont(cache.GetResource<FontResource>("/Fonts/IBMPlexSans/IBMPlexSans-Italic.ttf"), 12);
+        _largeFont = new VectorFont(cache.GetResource<FontResource>("/Fonts/IBMPlexSans/IBMPlexSans-BoldItalic.ttf"), 14);
     }
 
     public void OnStateEntered(GameplayState state)

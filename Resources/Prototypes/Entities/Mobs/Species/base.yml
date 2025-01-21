@@ -3,6 +3,7 @@
   parent:
   - BaseMob
   - MobDamageable
+  - MobPolymorphable
   - MobCombat
   id: BaseMobSpecies
   abstract: true
@@ -26,6 +27,8 @@
     - map: [ "gloves" ]
     - map: [ "shoes" ]
     - map: [ "ears" ]
+    - map: [ "innerBelt" ]
+    - map: [ "innerNeck" ]
     - map: [ "outerClothing" ]
     - map: [ "eyes" ]
     - map: [ "belt" ]
@@ -96,6 +99,12 @@
         - MobLayer
   - type: FloorOcclusion
   - type: Mood
+  - type: Heartbeat
+    heartbeatSound:
+      path: /Audio/_Finster/Effects/Heart/heart.ogg
+      params:
+        volume: 1
+        loop: True
   - type: RangedDamageSound
     soundGroups:
       Brute:
@@ -167,6 +176,11 @@
     damage:
       types:
         Blunt: 5
+    heavyRateModifier: 1
+    heavyDamageBaseModifier: 1
+    heavyPartDamageMultiplier: 1
+    heavyStaminaCost: 0
+    maxTargets: 1
   - type: SleepEmitSound
   - type: SSDIndicator
   - type: StandingState
@@ -175,6 +189,12 @@
   - type: Scent
   - type: MindContainer
     showExamineInfo: true
+  - type: CanEnterCryostorage
+  #- type: InteractionPopup
+  #  successChance: 1
+  #  interactSuccessString: hugging-success-generic
+  #  interactSuccessSound: /Audio/Effects/thudswoosh.ogg
+  #  messagePerceivedByOthers: hugging-success-generic-others
   - type: CanHostGuardian
   - type: NpcFactionMember
     factions:
@@ -200,13 +220,13 @@
   - type: Puller
   - type: Speech
     fontId: Allods
-    speechSounds: Alto
+    speechSounds: DeathnetMan # Alto
   - type: DamageForceSay
   - type: Vocal
     sounds:
-      Male: MaleHuman
-      Female: FemaleHuman
-      Unsexed: MaleHuman
+      Male: DeathnetMaleHuman
+      Female: DeathnetFemaleHuman
+      Unsexed: DeathnetMaleHuman
   - type: Emoting
   - type: BodyEmotes
     soundsId: GeneralBodyEmotes
@@ -360,6 +380,8 @@
     - map: [ "gloves" ]
     - map: [ "shoes" ]
     - map: [ "ears" ]
+    - map: [ "innerBelt" ]
+    - map: [ "innerNeck" ]
     - map: [ "outerClothing" ]
     - map: [ "eyes" ]
     - map: [ "belt" ]

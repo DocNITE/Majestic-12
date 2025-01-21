@@ -9,9 +9,9 @@
         <TextureRect
             Name="TargetDoll"
             Stretch="KeepAspectCentered"
-            SetSize="192 192">
+            SetSize="64 128">
             <PanelContainer
-                SetSize="192 192"
+                SetSize="64 128"
                 Name="Panel"
                 Margin="0 0 0 0"
                 VerticalAlignment="Bottom"

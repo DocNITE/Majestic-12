@@ -1,0 +1,13 @@
+- type: soundCollection
+  id: DeathSounds
+  files:
+    - /Audio/_Finster/Effects/Death/death.ogg
+    - /Audio/_Finster/Effects/Death/death.wav
+
+- type: soundCollection
+  id: HeartSounds
+  files:
+    - /Audio/_Finster/Effects/Heart/heart.ogg
+    - /Audio/_Finster/Effects/Heart/heart2.wav
+    - /Audio/_Finster/Effects/Heart/heart3.ogg
+    - /Audio/_Finster/Effects/Heart/heart4.ogg

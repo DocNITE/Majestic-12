@@ -1,5 +1,6 @@
 - type: soundCollection
   id: LobbyMusic
   files:
-    - /Audio/Lobby/aphex_twin_19.ogg
+    - /Audio/Lobby/black_dog.ogg
+    #- /Audio/Lobby/aphex_twin_19.ogg
     #- /Audio/Lobby/fallen_kingdom.ogg

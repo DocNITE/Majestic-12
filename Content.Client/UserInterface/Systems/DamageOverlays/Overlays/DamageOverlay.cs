@@ -14,11 +14,13 @@ public sealed class DamageOverlay : Overlay
     [Dependency] private readonly IEntityManager _entityManager = default!;
     [Dependency] private readonly IPlayerManager _playerManager = default!;
 
+    public override bool RequestScreenTexture => true;
     public override OverlaySpace Space => OverlaySpace.WorldSpace;
 
     private readonly ShaderInstance _critShader;
     private readonly ShaderInstance _oxygenShader;
     private readonly ShaderInstance _bruteShader;
+    private readonly ShaderInstance _greyscaleShader;
 
     public MobState State = MobState.Alive;
 
@@ -52,6 +54,7 @@ public sealed class DamageOverlay : Overlay
         _oxygenShader = _prototypeManager.Index<ShaderPrototype>("GradientCircleMask").InstanceUnique();
         _critShader = _prototypeManager.Index<ShaderPrototype>("GradientCircleMask").InstanceUnique();
         _bruteShader = _prototypeManager.Index<ShaderPrototype>("GradientCircleMask").InstanceUnique();
+        _greyscaleShader = _prototypeManager.Index<ShaderPrototype>("GreyscaleFullscreen").InstanceUnique();
     }
 
     protected override void Draw(in OverlayDrawArgs args)
@@ -170,6 +173,29 @@ public sealed class DamageOverlay : Overlay
 
         level = State != MobState.Critical ? _oldOxygenLevel : 1f;
 
+        float outerDarkness;
+        float critTime;
+
+        // If in crit then just fix it; also pulse it very occasionally so they can see more.
+        if (_oldCritLevel > 0f)
+        {
+            var adjustedTime = time * 2f;
+            critTime = MathF.Max(0, MathF.Sin(adjustedTime) + 2 * MathF.Sin(2 * adjustedTime / 4f) + MathF.Sin(adjustedTime / 4f) - 3f);
+
+            if (critTime > 0f)
+            {
+                outerDarkness = 1f - critTime / 1.5f;
+            }
+            else
+            {
+                outerDarkness = 1f;
+            }
+        }
+        else
+        {
+            outerDarkness = MathF.Min(0.98f, 0.3f * MathF.Log(level) + 1f);
+        }
+
         if (level > 0f)
         {
             float outerMaxLevel = 0.6f * distance;
@@ -179,29 +205,6 @@ public sealed class DamageOverlay : Overlay
 
             var outerRadius = outerMaxLevel - level * (outerMaxLevel - outerMinLevel);
             var innerRadius = innerMaxLevel - level * (innerMaxLevel - innerMinLevel);
-
-            float outerDarkness;
-            float critTime;
-
-            // If in crit then just fix it; also pulse it very occasionally so they can see more.
-            if (_oldCritLevel > 0f)
-            {
-                var adjustedTime = time * 2f;
-                critTime = MathF.Max(0, MathF.Sin(adjustedTime) + 2 * MathF.Sin(2 * adjustedTime / 4f) + MathF.Sin(adjustedTime / 4f) - 3f);
-
-                if (critTime > 0f)
-                {
-                    outerDarkness = 1f - critTime / 1.5f;
-                }
-                else
-                {
-                    outerDarkness = 1f;
-                }
-            }
-            else
-            {
-                outerDarkness = MathF.Min(0.98f, 0.3f * MathF.Log(level) + 1f);
-            }
 
             _oxygenShader.SetParameter("time", 0.0f);
             _oxygenShader.SetParameter("color", new Vector3(0f, 0f, 0f));
@@ -218,6 +221,7 @@ public sealed class DamageOverlay : Overlay
 
         if (level > 0f)
         {
+            /*
             float outerMaxLevel = 2.0f * distance;
             float outerMinLevel = 1.0f * distance;
             float innerMaxLevel = 0.6f * distance;
@@ -236,7 +240,22 @@ public sealed class DamageOverlay : Overlay
             _critShader.SetParameter("innerCircleMaxRadius", innerRadius + 0.005f * distance);
             _critShader.SetParameter("outerCircleRadius", outerRadius);
             _critShader.SetParameter("outerCircleMaxRadius", outerRadius + 0.2f * distance);
+            */
+            _critShader.SetParameter("time", 0.0f);
+            _critShader.SetParameter("color", new Vector3(0f, 0f, 0f));
+            _critShader.SetParameter("darknessAlphaOuter", outerDarkness);
+            _critShader.SetParameter("innerCircleRadius", 0f);
+            _critShader.SetParameter("innerCircleMaxRadius", 0f);
+            _critShader.SetParameter("outerCircleRadius", 0f);
+            _critShader.SetParameter("outerCircleMaxRadius", distance);
             handle.UseShader(_critShader);
+            handle.DrawRect(viewport, Color.White);
+        }
+
+        if (State == MobState.Dead && ScreenTexture != null)
+        {
+            _greyscaleShader?.SetParameter("SCREEN_TEXTURE", ScreenTexture);
+            handle.UseShader(_greyscaleShader);
             handle.DrawRect(viewport, Color.White);
         }
 

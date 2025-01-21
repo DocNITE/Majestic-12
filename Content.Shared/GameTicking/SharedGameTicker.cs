@@ -1,4 +1,5 @@
 using Content.Shared.Roles;
+using Content.Shared.GameTicking.Prototypes;
 using Robust.Shared.Network;
 using Robust.Shared.Replays;
 using Robust.Shared.Serialization;

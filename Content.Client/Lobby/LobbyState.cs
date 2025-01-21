@@ -12,7 +12,6 @@ using Robust.Client.UserInterface;
 using Robust.Client.UserInterface.Controls;
 using Robust.Shared.Timing;
 
-
 namespace Content.Client.Lobby
 {
     public sealed class LobbyState : Robust.Client.State.State
@@ -25,6 +24,7 @@ namespace Content.Client.Lobby
         [Dependency] private readonly IGameTiming _gameTiming = default!;
         [Dependency] private readonly IVoteManager _voteManager = default!;
 
+        private ISawmill _sawmill = default!;
         private ClientGameTicker _gameTicker = default!;
         private ContentAudioSystem _contentAudioSystem = default!;
 
@@ -42,6 +42,7 @@ namespace Content.Client.Lobby
             _gameTicker = _entityManager.System<ClientGameTicker>();
             _contentAudioSystem = _entityManager.System<ContentAudioSystem>();
             _contentAudioSystem.LobbySoundtrackChanged += UpdateLobbySoundtrackInfo;
+            _sawmill = Logger.GetSawmill("lobby");
 
             chatController.SetMainChat(true);
 
@@ -114,7 +115,7 @@ namespace Content.Client.Lobby
                 return;
             }
 
-            Lobby!.StationTime.Text =  Loc.GetString("lobby-state-player-status-round-not-started");
+            Lobby!.StationTime.Text = Loc.GetString("lobby-state-player-status-round-not-started");
             string text;
 
             if (_gameTicker.Paused)

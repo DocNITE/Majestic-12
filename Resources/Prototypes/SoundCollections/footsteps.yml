@@ -60,6 +60,7 @@
   - /Audio/Effects/Footsteps/clownstep1.ogg
   - /Audio/Effects/Footsteps/clownstep2.ogg
 
+
 - type: soundCollection
   id: FootstepJester
   files:
@@ -200,6 +201,15 @@
   - /Audio/_Finster/Effects/Footsteps/FTSHAL_5.ogg
 
 - type: soundCollection
+  id: FootstepMud
+  files:
+  - /Audio/_Finster/Effects/Footsteps/mud_01.ogg
+  - /Audio/_Finster/Effects/Footsteps/mud_02.ogg
+  - /Audio/_Finster/Effects/Footsteps/mud_03.ogg
+  - /Audio/_Finster/Effects/Footsteps/mud_04.ogg
+  - /Audio/_Finster/Effects/Footsteps/mud_05.ogg
+
+- type: soundCollection
   id: FootstepSticky
   files:
   - /Audio/_Finster/Effects/Footsteps/footstep_shoe_flesh_step.ogg
@@ -231,3 +241,12 @@
   id: FootstepHoverBorg
   files:
   - /Audio/Effects/Footsteps/borgwalk2.ogg
+
+- type: soundCollection
+  id: FootstepHighHeels
+  files:
+  - /Audio/Effects/Footsteps/highheels1.ogg
+  - /Audio/Effects/Footsteps/highheels2.ogg
+  - /Audio/Effects/Footsteps/highheels3.ogg
+  - /Audio/Effects/Footsteps/highheels4.ogg
+  - /Audio/Effects/Footsteps/highheels5.ogg

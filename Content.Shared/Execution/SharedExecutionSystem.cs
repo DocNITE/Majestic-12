@@ -17,6 +17,7 @@ using Content.Shared.Tag;
 using Content.Shared.Weapons.Ranged.Components;
 using Robust.Shared.Player;
 using Robust.Shared.Audio.Systems;
+using Content.Shared._White.Intent;
 
 namespace Content.Shared.Execution;
 
@@ -31,7 +32,7 @@ public sealed class SharedExecutionSystem : EntitySystem
     [Dependency] private readonly MobStateSystem _mobState = default!;
     [Dependency] private readonly SharedPopupSystem _popup = default!;
     [Dependency] private readonly SharedSuicideSystem _suicide = default!;
-    [Dependency] private readonly SharedCombatModeSystem _combat = default!;
+    [Dependency] private readonly SharedIntentSystem _intent = default!;
     [Dependency] private readonly SharedExecutionSystem _execution = default!;
     [Dependency] private readonly SharedMeleeWeaponSystem _melee = default!;
     [Dependency] private readonly SharedMindSystem _mind = default!;
@@ -204,8 +205,8 @@ public sealed class SharedExecutionSystem : EntitySystem
             return;
 
         // This is needed so the melee system does not stop it.
-        var prev = _combat.IsInCombatMode(attacker);
-        _combat.SetInCombatMode(attacker, true);
+        var prev = _intent.GetIntent(attacker);
+        _intent.SetIntent(attacker, Intent.Harm);
         entity.Comp.Executing = true;
 
         var internalMsg = entity.Comp.CompleteInternalMeleeExecutionMessage;
@@ -222,7 +223,7 @@ public sealed class SharedExecutionSystem : EntitySystem
         else
             _melee.AttemptLightAttack(attacker, weapon, meleeWeaponComp, victim);
 
-        _combat.SetInCombatMode(attacker, prev);
+        _intent.SetIntent(attacker, prev ?? Intent.Help);
         entity.Comp.Executing = false;
         args.Handled = true;
 

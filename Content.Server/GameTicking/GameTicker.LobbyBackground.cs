@@ -1,5 +1,5 @@
 using Content.Shared._White;
-using Content.Server.GameTicking.Prototypes;
+using Content.Shared.GameTicking.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Utility;
 using System.Linq;

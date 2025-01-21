@@ -186,10 +186,10 @@ binds:
   mod1: Alt
 - function: OpenCharacterMenu
   type: State
-  mod1: Shift
-  key: C
+  key: K
 - function: OpenEmotesMenu
   type: State
+  mod1: Shift
   key: Y
 - function: OpenLanguageMenu
   type: State
@@ -523,6 +523,7 @@ binds:
   key: Z
 - function: OpenAbilitiesMenu
   type: State
+  mod1: Shift
   key: K
 - function: Hotbar0
   type: State
@@ -597,3 +598,33 @@ binds:
 - function: LookUp
   type: State
   key: Space
+- function: MappingUnselect
+  type: State
+  key: MouseRight
+  canFocus: true
+- function: SaveMap
+  type: State
+  key: S
+  mod1: Control
+- function: MappingEnablePick
+  type: State
+  key: Num5
+- function: MappingEnableDelete
+  type: State
+  key: Num6
+- function: MappingPick
+  type: State
+  key: MouseLeft
+  canFocus: true
+- function: MappingRemoveDecal
+  type: State
+  key: MouseLeft
+  canFocus: true
+- function: MappingCancelEraseDecal
+  type: State
+  key: MouseRight
+  canFocus: true
+- function: MappingOpenContextMenu
+  type: State
+  key: MouseRight
+  canFocus: true

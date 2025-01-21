@@ -1,0 +1,8 @@
+- type: speechSounds
+  id: DeathnetMan
+  saySound:
+    path: /Audio/_Finster/Voice/deathnet/man4.ogg
+  askSound:
+    path: /Audio/_Finster/Voice/deathnet/man3.ogg
+  exclaimSound:
+    path: /Audio/_Finster/Voice/deathnet/man5.ogg

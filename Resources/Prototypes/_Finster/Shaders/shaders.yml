@@ -27,3 +27,13 @@
   id: Anime
   kind: source
   path: "/Textures/_Finster/Shaders/anime.swsl"
+
+- type: shader
+  id: Glitch
+  kind: source
+  path: "/Textures/_Finster/Shaders/glitch.swsl"
+
+- type: shader
+  id: Starfield
+  kind: source
+  path: "/Textures/_Finster/Shaders/starfield.swsl"

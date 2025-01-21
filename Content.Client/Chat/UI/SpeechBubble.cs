@@ -4,6 +4,8 @@ using Content.Client.Viewport;
 using Content.KayMisaZlevels.Client;
 using Content.Shared.CCVar;
 using Content.Shared.Chat;
+using Content.Shared.Speech;
+using Robust.Client.GameObjects;
 using Robust.Client.Graphics;
 using Robust.Client.UserInterface;
 using Robust.Client.UserInterface.Controls;
@@ -19,6 +21,8 @@ namespace Content.Client.Chat.UI
         [Dependency] private readonly IEntityManager _entityManager = default!;
         [Dependency] protected readonly IConfigurationManager ConfigManager = default!;
         [Dependency] protected readonly  IUserInterfaceManager _uiManager = default!;
+
+        private readonly SharedTransformSystem _transformSystem;
 
         public enum SpeechType : byte
         {
@@ -86,6 +90,7 @@ namespace Content.Client.Chat.UI
         {
             IoCManager.InjectDependencies(this);
             _senderEntity = senderEntity;
+            _transformSystem = _entityManager.System<SharedTransformSystem>();
 
             // Use text clipping so new messages don't overlap old ones being pushed up.
             RectClipContent = true;
@@ -142,8 +147,13 @@ namespace Content.Client.Chat.UI
                 Modulate = Color.White;
             }
 
-            var offset = (-_eyeManager.CurrentEye.Rotation).ToWorldVec() * -EntityVerticalOffset;
-            var worldPos = xform.WorldPosition + offset;
+            var baseOffset = 0f;
+
+           if (_entityManager.TryGetComponent<SpeechComponent>(_senderEntity, out var speech))
+                baseOffset = speech.SpeechBubbleOffset;
+
+            var offset = (-_eyeManager.CurrentEye.Rotation).ToWorldVec() * -(EntityVerticalOffset + baseOffset);
+            var worldPos = _transformSystem.GetWorldPosition(xform) + offset;
 
             var lowerCenter = _eyeManager.WorldToScreen(worldPos) / UIScale;
             if (_eyeManager.MainViewport is not ZScalingViewport svp)

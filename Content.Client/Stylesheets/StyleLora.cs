@@ -70,7 +70,7 @@ namespace Content.Client.Stylesheets
             (
                 new []
                 {
-                    "/Fonts/Lora/Lora-Regular.ttf",
+                    "/Fonts/IBMPlexSans/IBMPlexSans-Regular.ttf",
                     "/Fonts/NotoSans/NotoSansSymbols-Regular.ttf",
                     "/Fonts/NotoSans/NotoSansSymbols2-Regular.ttf"
                 },
@@ -80,7 +80,7 @@ namespace Content.Client.Stylesheets
             (
                 new []
                 {
-                    "/Fonts/Lora/Lora-Italic.ttf",
+                    "/Fonts/IBMPlexSans/IBMPlexSans-Italic.ttf",
                     "/Fonts/NotoSans/NotoSansSymbols-Regular.ttf",
                     "/Fonts/NotoSans/NotoSansSymbols2-Regular.ttf"
                 },
@@ -296,6 +296,10 @@ namespace Content.Client.Stylesheets
         public const string StyleClassChatChannelSelectorButton = "chatSelectorOptionButton";
         public const string StyleClassChatFilterOptionButton = "chatFilterOptionButton";
         public const string StyleClassStorageButton = "storageButton";
+        public const string StyleClassFuckyWuckyBackground = "FuckyWuckyBackground";
+        public const string StyleClassGayShitBackground = "GayShitBackground";
+        public const string StyleClassLobbyGayBackground = "LobbyGayBackground";
+
 
         public const string StyleClassSliderRed = "Red";
         public const string StyleClassSliderGreen = "Green";
@@ -318,7 +322,7 @@ namespace Content.Client.Stylesheets
 
         public static readonly Color PanelDark = Color.FromHex("#0a0a0a");
 
-        public static readonly Color LoraPurple = Color.FromHex("#9051a8");
+        public static readonly Color LoraPurple = Color.FromHex("#A2A8B1");
         public static readonly Color GoodGreenFore = Color.FromHex("#006400");
         public static readonly Color ConcerningOrangeFore = Color.FromHex("#99461d");
         public static readonly Color DangerousRedFore = Color.FromHex("#640000");
@@ -424,7 +428,7 @@ namespace Content.Client.Stylesheets
             var loraBold16 = resCache.LoraStack(variation: "Bold", size: 16);
             var loraBold18 = resCache.LoraStack(variation: "Bold", size: 18);
             var loraBold20 = resCache.LoraStack(variation: "Bold", size: 20);
-            var goMono = resCache.GetFont("/Fonts/GoMono/GoMonoNerdFontMono-Regular.ttf", size: 12);
+            var goMono =  resCache.GetFont("/EngineFonts/NotoSans/NotoSansMono-Regular.ttf", size: 12); // resCache.GetFont("/Fonts/GoMono/GoMonoNerdFontMono-Regular.ttf", size: 12);
             var arx18 = resCache.GetFont("/Fonts/Arx/Arx.ttf", size: 18);
             var windowHeaderTex = resCache.GetTexture("/Textures/Interface/Lora/window_header.png");
             var windowHeader = new StyleBoxTexture
@@ -456,6 +460,41 @@ namespace Content.Client.Stylesheets
                 Texture = borderedWindowBackgroundTex,
             };
             borderedWindowBackground.SetPatchMargin(StyleBox.Margin.All, 2);
+
+            // WD-EDIT START
+            var fuckyWuckyBackgroundTex = resCache.GetTexture("/Textures/Interface/Lora/fucky_wucky.png");
+            var fuckyWuckyBackground = new StyleBoxTexture
+            {
+                Texture = fuckyWuckyBackgroundTex,
+                Mode = StyleBoxTexture.StretchMode.Tile
+            };
+
+            fuckyWuckyBackground.SetPatchMargin(StyleBox.Margin.All, 24);
+            fuckyWuckyBackground.SetExpandMargin(StyleBox.Margin.All, -4);
+            fuckyWuckyBackground.SetContentMarginOverride(StyleBox.Margin.All, 8);
+
+            var lobbyGayBackgroundTex = resCache.GetTexture("/Textures/Interface/Lora/lobby_gay.png");
+            var lobbyGayBackground = new StyleBoxTexture
+            {
+                Texture = lobbyGayBackgroundTex,
+                Mode = StyleBoxTexture.StretchMode.Tile
+            };
+
+            lobbyGayBackground.SetPatchMargin(StyleBox.Margin.All, 24);
+            lobbyGayBackground.SetExpandMargin(StyleBox.Margin.All, -4);
+            lobbyGayBackground.SetContentMarginOverride(StyleBox.Margin.All, 8);
+
+            var gayShitBackgroundTex = resCache.GetTexture("/Textures/Interface/Lora/gay_shit.png");
+            var gayShitBackground = new StyleBoxTexture
+            {
+                Texture = gayShitBackgroundTex,
+                Mode = StyleBoxTexture.StretchMode.Tile
+            };
+
+            gayShitBackground.SetPatchMargin(StyleBox.Margin.All, 2);
+            gayShitBackground.SetExpandMargin(StyleBox.Margin.All, -2);
+
+            // WD-EDIT END
 
             var contextMenuBackground = new StyleBoxTexture
             {
@@ -609,12 +648,16 @@ namespace Content.Client.Stylesheets
 
             var chatBg = new StyleBoxFlat
             {
-                BackgroundColor = ChatBackgroundColor
+                BackgroundColor = ChatBackgroundColor,
+                BorderColor = ButtonColorHovered,
+                BorderThickness = new Thickness(2, 2, 2, 2),
             };
 
             var chatSubBg = new StyleBoxFlat
             {
                 BackgroundColor = ChatBackgroundColor,
+                BorderColor = ButtonColorHovered,
+                BorderThickness = new Thickness(2, 2, 2, 2),
             };
             chatSubBg.SetContentMarginOverride(StyleBox.Margin.All, 2);
 
@@ -759,8 +802,8 @@ namespace Content.Client.Stylesheets
             var sliderFillBlue = new StyleBoxTexture(sliderFillBox) { Modulate = Color.Blue };
             var sliderFillWhite = new StyleBoxTexture(sliderFillBox) { Modulate = Color.White };
 
-            var blackmoorFont13 = resCache.GetFont("/Fonts/alundratext.ttf", 18); // resCache.GetFont("/Fonts/BlackmoorLet/BlackmoorLet.ttf", 18);
-            var blackmoorFont14 = resCache.GetFont("/Fonts/alundratext.ttf", 18); // resCache.GetFont("/Fonts/BlackmoorLet/BlackmoorLet.ttf", 18);
+            var blackmoorFont13 = resCache.GetFont("/Fonts/home-video-font/HomeVideoBold-R90Dv.ttf", 18); // resCache.GetFont("/Fonts/BlackmoorLet/BlackmoorLet.ttf", 18);
+            var blackmoorFont14 = resCache.GetFont("/Fonts/home-video-font/HomeVideoBold-R90Dv.ttf", 18); // resCache.GetFont("/Fonts/BlackmoorLet/BlackmoorLet.ttf", 18);
 
             var insetBack = new StyleBoxTexture
             {
@@ -825,6 +868,29 @@ namespace Content.Client.Stylesheets
                     {
                         new StyleProperty(PanelContainer.StylePropertyPanel, borderedTransparentWindowBackground),
                     }),
+                // WD-EDIT START
+                // Chat background.
+                new StyleRule(
+                    new SelectorElement(null, new[] {StyleClassFuckyWuckyBackground}, null, null),
+                    new[]
+                    {
+                        new StyleProperty(PanelContainer.StylePropertyPanel, fuckyWuckyBackground),
+                    }),
+                // Lobby background.
+                new StyleRule(
+                    new SelectorElement(null, new[] {StyleClassLobbyGayBackground}, null, null),
+                    new[]
+                    {
+                        new StyleProperty(PanelContainer.StylePropertyPanel, lobbyGayBackground),
+                    }),
+                // Panel background.
+                new StyleRule(
+                    new SelectorElement(null, new[] {StyleClassGayShitBackground}, null, null),
+                    new[]
+                    {
+                        new StyleProperty(PanelContainer.StylePropertyPanel, gayShitBackground),
+                    }),
+                // WD-EDIT END
                 // inventory slot background
                 new StyleRule(
                     new SelectorElement(null, new[] {StyleClassInventorySlotBackground}, null, null),

@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using Content.Server.NPC.Components;
 using Content.Server.Storage.EntitySystems;
+using Content.Shared._White.Intent;
 using Content.Shared.CombatMode;
 using Robust.Server.Containers;
 
@@ -68,7 +69,7 @@ public sealed partial class EscapeOperator : HTNOperator, IHtnConditionalShutdow
     public void ConditionalShutdown(NPCBlackboard blackboard)
     {
         var owner = blackboard.GetValue<EntityUid>(NPCBlackboard.Owner);
-        _entManager.System<SharedCombatModeSystem>().SetInCombatMode(owner, false);
+        _entManager.System<SharedIntentSystem>().SetIntent(owner, Intent.Help);
         _entManager.RemoveComponent<NPCMeleeCombatComponent>(owner);
         blackboard.Remove<EntityUid>(TargetKey);
     }

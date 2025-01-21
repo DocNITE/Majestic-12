@@ -139,3 +139,12 @@ public sealed partial class NearbyComponentsRule : RulesRule
     [DataField("range")]
     public float Range = 10f;
 }
+
+/// <summary>
+/// Check if player use combat mode.
+/// </summary>
+public sealed partial class CombatMode : RulesRule
+{
+    [DataField("state")]
+    public bool State = false;
+}

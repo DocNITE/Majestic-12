@@ -35,6 +35,7 @@ public class ActionButtonContainer : GridContainer
         {
             var button = new ActionButton(_entity);
 
+            // FINSTER EDIT
             // All actions binds should be removed
             /*if (!keys.TryGetValue(index, out var boundKey))
                 return button;
@@ -43,21 +44,22 @@ public class ActionButtonContainer : GridContainer
             if (_input.TryGetKeyBinding(boundKey, out var binding))
                 button.Label.Text = binding.GetKeyString();
             }*/
+            // FINSTER EDIT END
 
             return button;
         }
     }
 
-    public void SetActionData(ActionsSystem system, params EntityUid?[] actionTypes)
+    public void SetActionData(ActionsSystem system, List<EntityUid> actionTypes)
     {
-        var uniqueCount = Math.Max(ContentKeyFunctions.GetHotbarBoundKeys().Length, actionTypes.Length + 1);
+        var uniqueCount = actionTypes.Count;
         if (ChildCount != uniqueCount)
             BuildActionButtons(uniqueCount);
 
         for (var i = 0; i < uniqueCount; i++)
         {
             if (!actionTypes.TryGetValue(i, out var action))
-                action = null;
+                continue;
             ((ActionButton) GetChild(i)).UpdateData(action, system);
         }
     }

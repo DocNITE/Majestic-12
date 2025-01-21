@@ -11,4 +11,7 @@ public sealed partial class AlertCategoryPrototype : IPrototype
     /// <inheritdoc/>
     [IdDataField]
     public string ID { get; } = default!;
+
+    [DataField]
+    public string Group = "Default";
 }
