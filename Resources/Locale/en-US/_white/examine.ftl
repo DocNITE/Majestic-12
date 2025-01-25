@@ -16,6 +16,7 @@ back-he = On his back
 gloves-he = On his arms
 belt-he = On it hangs
 shoes-he = On his feet
+pants-he = On his legs
 
 # She
 
@@ -30,6 +31,7 @@ back-she = On her back
 gloves-she = On her arms
 belt-she = On it hangs
 shoes-she = On her feet
+pants-she = On her legs
 
 # It
 
@@ -44,6 +46,7 @@ back-it = On its back, it carries
 gloves-it = On its hands
 belt-it = It is wearing
 shoes-it = It is wearing
+pants-it = It is wearing
 
 # They
 
@@ -58,3 +61,4 @@ back-they = On their backs
 gloves-they = On their hands
 belt-they = It weighs on them
 shoes-they = On their feet
+pants-they = On their legs

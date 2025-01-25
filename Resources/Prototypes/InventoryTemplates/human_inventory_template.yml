@@ -22,6 +22,14 @@
       uiWindowPos: 0,3
       strippingWindowPos: 0,2
       displayName: Jumpsuit
+    #finster - pants
+    - name: pants
+      slotTexture: pants
+      slotFlags: LEGS
+      stripTime: 6
+      uiWindowPos: 1,2
+      strippingWindowPos: 1,2
+      displayName: Pants
     - name: pocket1
       slotTexture: pocket
       fullTextureName: template_small
