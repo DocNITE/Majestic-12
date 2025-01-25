@@ -21,6 +21,7 @@
   id: ScourgerGear
   equipment:
     jumpsuit: FinsterClothingUniformJumpsuitGambeson
+    pants: FinsterClothingUniformPantsTrou
     back: ClothingBackpackSatchelLeather
     shoes: FinsterClothingShoesLeatherShoes
 
