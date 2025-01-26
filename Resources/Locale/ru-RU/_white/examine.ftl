@@ -15,7 +15,8 @@ outer-he = А так же
 back-he = На его спине
 gloves-he = На его руках
 belt-he = На нем весит
-shoes-he = На ногах у него
+shoes-he = На ступнях у него
+pants-he = На ногах у него
 
 # Она
 
@@ -29,7 +30,8 @@ outer-she = А так же
 back-she = На ее спине
 gloves-she = На ее руках
 belt-she = На ней весит
-shoes-she = На ногах у нее
+shoes-she = На ступнях у нее
+pants-she = На ногах у нее
 
 # Оно
 
@@ -43,7 +45,8 @@ outer-he = А так же
 back-he = На его спине
 gloves-he = На его руках
 belt-he = На нем весит
-shoes-he = На ногах у него
+shoes-he = На ступнях у него
+pants-he = На ногах у него
 
 # Они
 
@@ -57,4 +60,5 @@ outer-they = А так же
 back-they = На их спинах
 gloves-they = На их руках
 belt-they = На них весит
-shoes-they = На ногах у них
+shoes-they = На ступнях у них
+pants-he = На ногах у них
