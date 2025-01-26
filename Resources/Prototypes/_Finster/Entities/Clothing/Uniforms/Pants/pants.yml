@@ -43,3 +43,14 @@
     sprite: _Finster/Clothing/Uniforms/Pants/trou.rsi
   - type: Clothing
     sprite: _Finster/Clothing/Uniforms/Pants/trou.rsi
+
+- type: entity
+  parent: BaseClothingLegs
+  id: FinsterClothingUniformPantsDesert
+  name: desert pants
+  description: IN DEV
+  components:
+  - type: Sprite
+    sprite: _Finster/Clothing/Uniforms/Pants/desertbdu.rsi
+  - type: Clothing
+    sprite: _Finster/Clothing/Uniforms/Pants/desertbdu.rsi

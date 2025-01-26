@@ -1777,7 +1777,8 @@
 - type: entity
   parent: ClothingUniformBase
   id: ClothingUniformJumpsuitSuitRolledSleeves
-  name: rolled sleeves suit
+  name: rolled sleeves shirt
+  suffix: finster
   description: A dapper suit with a vest and a red tie, sleeves rolled up to show your forearms.
   components:
   - type: Sprite
@@ -1788,7 +1789,8 @@
 - type: entity
   parent: ClothingUniformBase
   id: ClothingUniformJumpsuitBartenderGrey
-  name: grey bartender's uniform
+  name: grey bartender's shirt
+  suffix: finster
   description: A nice and tidy grey uniform. Shame about the bar, though.
   components:
   - type: Sprite
@@ -1811,6 +1813,7 @@
   parent: ClothingUniformBase
   id: ClothingUniformJumpsuitFlannelOveralls
   name: flannel overalls
+  suffix: finster
   description: Oh, I'm goin' down this road feelin' bad... Lord, I'm goin' down this road feelin' bad...
   components:
   - type: Sprite
@@ -1844,6 +1847,7 @@
   parent: ClothingUniformBase
   id: ClothingUniformJumpsuitCamouflageShirt
   name: camouflage shirt
+  suffix: finster
   description: A long-sleeve camouflage shirt paired with a classic pair of jeans.
   components:
   - type: Sprite
@@ -1865,7 +1869,8 @@
 - type: entity
   parent: ClothingUniformBase
   id: ClothingUniformJumpsuitDesertUniform
-  name: desert uniform
+  name: desert shirt
+  suffix: finster
   description: A replica of vintage Solarian combat uniforms, for LARPing purposes.
   components:
   - type: Sprite
@@ -1877,6 +1882,7 @@
   parent: ClothingUniformBase
   id: ClothingUniformJumpsuitLumberjack
   name: lumberjack overalls
+  suffix: finster
   description: Overalls that make you look like a lumberjack.
   components:
   - type: Sprite
@@ -1898,7 +1904,8 @@
 - type: entity
   parent: ClothingUniformBase
   id: ClothingUniformJumpsuitGreyShirt
-  name: grey shirt and olive pants
+  name: grey shirt
+  suffix: finster
   description: Sometimes all you need is a tried but true combo, grey and olive.
   components:
   - type: Sprite
