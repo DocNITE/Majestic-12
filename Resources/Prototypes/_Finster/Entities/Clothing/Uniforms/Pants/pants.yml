@@ -54,3 +54,47 @@
     sprite: _Finster/Clothing/Uniforms/Pants/desertbdu.rsi
   - type: Clothing
     sprite: _Finster/Clothing/Uniforms/Pants/desertbdu.rsi
+
+- type: entity
+  parent: BaseClothingLegs
+  id: FinsterClothingUniformPantsTights
+  name: tights
+  description: IN DEV
+  components:
+  - type: Sprite
+    sprite: _Finster/Clothing/Uniforms/Pants/tights.rsi
+    scale: 0.7, 0.7
+  - type: Clothing
+    sprite: _Finster/Clothing/Uniforms/Pants/tights.rsi
+
+- type: entity
+  parent: BaseClothingLegs
+  id: FinsterClothingUniformPantsChain
+  name: chain
+  description: IN DEV
+  components:
+  - type: Sprite
+    sprite: _Finster/Clothing/Uniforms/Pants/chain.rsi
+  - type: Clothing
+    sprite: _Finster/Clothing/Uniforms/Pants/chain.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.9
+        Slash: 0.9
+        Piercing: 0.9
+        Heat: 0.9
+  - type: ClothingSpeedModifier
+    walkModifier: 0.95
+    sprintModifier: 0.95
+
+- type: entity
+  parent: BaseClothingLegs
+  id: FinsterClothingUniformPantsLeatherTrou
+  name: leather trou
+  description: IN DEV
+  components:
+  - type: Sprite
+    sprite: _Finster/Clothing/Uniforms/Pants/leathertrou.rsi
+  - type: Clothing
+    sprite: _Finster/Clothing/Uniforms/Pants/leathertrou.rsi
