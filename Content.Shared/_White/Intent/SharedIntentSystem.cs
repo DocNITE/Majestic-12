@@ -105,11 +105,11 @@ public abstract class SharedIntentSystem : EntitySystem
             return false;
 
         // We shouldn't attack or fire if we wanna throw item
-        if (TryComp(uid, out HandsComponent? handsComp))
-        {
-            if (handsComp.InThrowMode)
-                return false;
-        }
+        //if (TryComp(uid, out HandsComponent? handsComp))
+        //{
+        //    if (handsComp.InThrowMode)
+        //        return false;
+        //}
 
         // What the fuck are you doing spatison?
         // Why are we can attack the entity from grab and disarm mode?
