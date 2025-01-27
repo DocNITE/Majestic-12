@@ -27,8 +27,8 @@
       slotTexture: pants
       slotFlags: LEGS
       stripTime: 6
-      uiWindowPos: 1,2
-      strippingWindowPos: 1,2
+      uiWindowPos: 0,2
+      strippingWindowPos: 0,3
       displayName: Pants
     - name: pocket1
       slotTexture: pocket
