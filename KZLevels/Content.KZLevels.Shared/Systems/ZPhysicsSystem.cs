@@ -12,6 +12,7 @@ using Robust.Shared.Configuration;
 using Robust.Shared.GameObjects;
 using Robust.Shared.IoC;
 using Robust.Shared.Map;
+using Robust.Shared.Physics.Components;
 using Robust.Shared.Physics.Systems;
 
 namespace Content.KayMisaZlevels.Shared.Systems;
@@ -43,7 +44,8 @@ public sealed class ZPhysicsSystem : EntitySystem
     /// <inheritdoc/>
     public override void Initialize()
     {
-        SubscribeLocalEvent((Entity<KMZPhysicsComponent> ent, ref MoveEvent args) => OnPossiblyFalling(ent, ref args));
+        // TODO: Use KMZPhysicsComponent instead of PhysicsComponent
+        SubscribeLocalEvent((Entity<PhysicsComponent> ent, ref MoveEvent args) => OnPossiblyFalling(ent, ref args));
         if (_cfg.GetCVar(KMZLevelsCVars.ProcessAllPhysicsObjects))
             _xform.OnGlobalMoveEvent += XformOnOnGlobalMoveEvent;
     }

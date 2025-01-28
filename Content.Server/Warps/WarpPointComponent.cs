@@ -14,5 +14,12 @@ namespace Content.Server.Warps
         /// </summary>
         [DataField]
         public bool Follow;
+
+        /// <summary>
+        /// If true, entity with component would be deleted, when entity with <seealso cref="WarperComponent"/> will be deleted
+        /// Like ladders and another teleporters. Because it can be builded by the players.
+        /// </summary>
+        [DataField]
+        public bool SyncedByWarper = false;
     }
 }

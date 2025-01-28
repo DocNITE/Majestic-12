@@ -398,6 +398,12 @@ entities:
         version: 2
         nodes: []
     - type: LoadedMap
+    - type: ZDefinedStack
+      paths:
+      - /dev-1.yml
+      - /dev-2.yml
+      - /dev-3.yml
+      - /dev-4.yml
     - type: GravityShake
       shakeTimes: 10
     - type: RadiationGridResistance
