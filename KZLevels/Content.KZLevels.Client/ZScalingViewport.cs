@@ -192,7 +192,17 @@ public sealed class ZScalingViewport : Control, IViewportControl
                         Top = toDraw == id,
                     };
 
-                    _viewport!.Render();
+                    // Add some shadows, blur and disable fov for background layers
+                    if (toDraw != id)
+                    {
+                        var preivousFov = SetEyeFov(_viewport!.Eye, false); // Remove black fov area
+                        _viewport!.Render();
+                        SetEyeFov(_viewport!.Eye, preivousFov); // Remove black fov area
+                    }
+                    else
+                    {
+                        _viewport!.Render();
+                    }
 
                     first = false;
                     idx++;
@@ -204,7 +214,9 @@ public sealed class ZScalingViewport : Control, IViewportControl
             else
             {
                 _viewport!.Eye = Eye;
+                //var preivousFov = SetEyeFov(_viewport!.Eye, false); // Remove black fov area
                 _viewport!.Render(); // just do the thing.
+                //SetEyeFov(_viewport!.Eye, preivousFov); // Remove black fov area
             }
         }
 
@@ -230,6 +242,26 @@ public sealed class ZScalingViewport : Control, IViewportControl
         _viewport!.RenderScreenOverlaysBelow(handle, this, drawBoxGlobal);
         handle.DrawTextureRect(_viewport.RenderTarget.Texture, drawBox);
         _viewport.RenderScreenOverlaysAbove(handle, this, drawBoxGlobal);
+    }
+
+    /// <summary>
+    ///
+    /// </summary>
+    /// <param name="eye"></param>
+    /// <returns>Previous Fov state</returns>
+    private bool SetEyeFov(IEye? eye, bool state)
+    {
+        if (eye is null)
+            return false;
+
+        var previousFovState = eye.DrawFov;
+        eye.DrawFov = state;
+
+        // If we don't want draw fov by admin menu
+        if (previousFovState == state)
+            return false;
+
+        return previousFovState;
     }
 
     public void Screenshot(CopyPixelsDelegate<Rgba32> callback)

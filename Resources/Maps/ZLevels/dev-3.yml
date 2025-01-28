@@ -1,0 +1,264 @@
+meta:
+  format: 6
+  postmapinit: false
+tilemap:
+  0: Space
+  32: CultFloor
+  35: FinsterFloorAsh
+  38: FinsterFloorBarograte
+  31: FinsterFloorBath
+  34: FinsterFloorBfloorz
+  37: FinsterFloorBlocks
+  29: FinsterFloorBluestoneOne
+  5: FinsterFloorBluestoneThree
+  25: FinsterFloorBluestoneTwo
+  10: FinsterFloorCarpet
+  19: FinsterFloorCarvedStone
+  24: FinsterFloorChess
+  36: FinsterFloorChurch
+  46: FinsterFloorChurchBrick
+  23: FinsterFloorChurchMable
+  14: FinsterFloorChurchrought
+  9: FinsterFloorCobbleRock
+  4: FinsterFloorCobbleStoneOne
+  11: FinsterFloorCobbleStoneThree
+  8: FinsterFloorCobbleStoneTwo
+  40: FinsterFloorConcretedfloor
+  39: FinsterFloorDigStone
+  28: FinsterFloorDirt
+  27: FinsterFloorGrass
+  48: FinsterFloorGreenBlocks
+  45: FinsterFloorGreenStone
+  47: FinsterFloorHellGrass
+  22: FinsterFloorHerringbone
+  13: FinsterFloorHexStone
+  44: FinsterFloorHorZW
+  58: FinsterFloorInvertRoofGOne
+  59: FinsterFloorInvertRoofGTwo
+  56: FinsterFloorInvertRoofOne
+  57: FinsterFloorInvertRoofTwo
+  7: FinsterFloorMasonicSpiral
+  1: FinsterFloorMasonicsingle
+  2: FinsterFloorMasonicsingleinve
+  53: FinsterFloorMassiveCapretThree
+  54: FinsterFloorMassiveCarpetFive
+  55: FinsterFloorMassiveCarpetFour
+  63: FinsterFloorMassiveCarpetOne
+  52: FinsterFloorMassiveCarpetTwo
+  62: FinsterFloorMossyStone
+  49: FinsterFloorMudOne
+  50: FinsterFloorMudThree
+  51: FinsterFloorMudTwo
+  41: FinsterFloorPavingOne
+  42: FinsterFloorPavingTwo
+  43: FinsterFloorPlating
+  77: FinsterFloorRoad
+  71: FinsterFloorRoofGOne
+  70: FinsterFloorRoofGTwo
+  76: FinsterFloorRoofOne
+  72: FinsterFloorRoofTwo
+  66: FinsterFloorStoneredlarge
+  65: FinsterFloorStoneredtiny
+  67: FinsterFloorTileDesk
+  68: FinsterFloorTilerg
+  69: FinsterFloorTreeTopsOne
+  73: FinsterFloorTreeTopsTwo
+  74: FinsterFloorTwig
+  60: FinsterFloorTwigInvert
+  26: FinsterFloorVertW
+  75: FinsterFloorWeirdOne
+  78: FinsterFloorWeirdTwo
+  79: FinsterFloorWoodenFloorOne
+  61: FinsterFloorWoodenFloorT
+  64: FinsterFloorWoodenFloorTwo
+  20: FinsterFloorlinoleum
+  3: FloorArcadeBlue
+  6: FloorAsphalt
+  12: FloorAsteroidSandUnvariantized
+  15: FloorAstroIce
+  16: FloorAstroSnow
+  17: FloorBar
+  18: FloorBasalt
+  30: FloorBedrock
+  21: FloorBlueCircuit
+  129: FloorBrokenWood
+  114: FloorCarpetRed
+  120: FloorConcrete
+  33: FloorConcreteMono
+  124: FloorConcreteSmooth
+  112: FloorDirtIndoors
+  132: FloorGrayConcreteMono
+  123: FloorGrayConcreteSmooth
+  135: FloorLowDesert
+  108: FloorMS13CarpetBlue
+  107: FloorMS13CarpetFancyBlue
+  106: FloorMS13CarpetFancyGreen
+  151: FloorMS13CarpetFancyRed
+  150: FloorMS13CarpetGreen
+  111: FloorMS13CarpetViolet
+  110: FloorMS13Concrete
+  91: FloorMS13ConcreteIndustrial
+  92: FloorMS13ConcreteIndustrialAlt
+  95: FloorMS13ConcreteIndustrialSplit
+  94: FloorMS13MetalGrate
+  98: FloorMS13MetalIndustrial
+  97: FloorMS13MetalSolid
+  101: FloorMS13MetalTile
+  100: FloorMS13TileBlack
+  99: FloorMS13TileBlackFull
+  96: FloorMS13TileBlackLarge
+  93: FloorMS13TileBrown
+  90: FloorMS13TileCafe
+  109: FloorMS13TileCeramic
+  170: FloorMS13TileCheck
+  167: FloorMS13TileConcreteSmall
+  163: FloorMS13TileFancy
+  159: FloorMS13TileGreen
+  155: FloorMS13TileGreenFull
+  154: FloorMS13TileGrey
+  158: FloorMS13TileGreyLarge
+  162: FloorMS13TileGreyLong
+  166: FloorMS13TileLongBlue
+  169: FloorMS13TileNavy
+  127: FloorMS13TileOrnate
+  126: FloorMS13TileSierra
+  125: FloorMS13TileSierraBroken
+  173: FloorMS13TileWhiteFull
+  172: FloorMS13TileWhiteLarge
+  171: FloorMS13WoodCommon
+  168: FloorMS13WoodCommonDamaged
+  165: FloorMS13WoodFancy
+  161: FloorMS13WoodFancyDamaged
+  157: FloorMS13WoodMosaic
+  153: FloorMS13WoodMosaicDamaged
+  149: FloorMS13WoodWide
+  141: FloorMS13WoodWideDamaged
+  130: FloorMetalTunnelRusty
+  164: FloorMetalTunnelWasteland
+  113: FloorMiningDark
+  81: FloorPlanetDirt
+  82: FloorPlanetGrass
+  134: FloorRubble
+  131: FloorRubbleIndoors
+  89: FloorShuttleBlack
+  122: FloorSteelBurnt
+  139: FloorSteelLime
+  160: FloorWasteland
+  128: FloorWood
+  144: FloorWoodBurntBroken
+  133: FloorWoodHouse
+  136: FloorWoodHouseBroken
+  143: FloorWoodLarge
+  140: FloorWoodMaple
+  148: FloorWoodOak
+  152: FloorWoodOakBroken
+  156: FloorWoodTile
+  117: N14FloorConcrete
+  116: N14FloorConcreteDark
+  115: N14FloorConcreteGreyBay
+  119: N14FloorConcreteHexacrete
+  102: N14FloorConcreteHexacreteDark
+  118: N14FloorConcreteRoad
+  103: N14FloorConcreteTileGoon
+  85: N14FloorRoadBottom
+  121: N14FloorRoadCorner1
+  87: N14FloorRoadCorner4
+  138: N14FloorRoadInnerMiddle
+  84: N14FloorRoadLeft
+  105: N14FloorRoadOuterCorner1
+  88: N14FloorRoadOuterCorner2
+  137: N14FloorRoadOuterCorner3
+  86: N14FloorRoadOuterCorner4
+  83: N14FloorRoadOuterMiddlePath
+  80: N14FloorRoadRight
+  104: N14FloorRoadTop
+  147: WaterDeep
+  146: WaterMedium
+  142: WaterRiver
+  145: WaterShallow
+entities:
+- proto: ""
+  entities:
+  - uid: 1
+    components:
+    - type: MetaData
+      desc: Develompment world
+      name: FinsterDev 1
+    - type: Transform
+    - type: Map
+    - type: PhysicsMap
+    - type: GridTree
+    - type: MovedGrids
+    - type: Broadphase
+    - type: OccluderTree
+    - type: TimeCycle
+      minuteDuration: 1
+    - type: MapLight
+    - type: Biome
+      forcedMarkerLayers: []
+      markerLayers: []
+      loadedMarkers: {}
+      pendingMarkers: {}
+      loadedChunks: []
+      entities: {}
+      decals: {}
+      modifiedTiles: {}
+      template: Caves
+      layers: []
+      enabled: False
+    - type: MapAtmosphere
+      mixture:
+        volume: 2500
+        immutable: True
+        temperature: 293.15
+        moles:
+        - 21.82478
+        - 82.10312
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+    - type: SpreaderGrid
+      updateAccumulator: 0.9009614
+    - type: StationIgnoreTransform
+    - type: BecomesStation
+      id: FinsterDev
+    - type: MapGrid
+      chunks:
+        -2,-1:
+          ind: -2,-1
+          tiles: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAARwAAAAAARwAAAAAARwAAAAAARwAAAAAARwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAARwAAAAAARwAAAAAARwAAAAAARwAAAAAARwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAARwAAAAAARwAAAAAARwAAAAAARwAAAAAARwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAARwAAAAAARwAAAAAARwAAAAAARwAAAAAARwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAARwAAAAAARwAAAAAARwAAAAAARwAAAAAARwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+          version: 6
+    - type: GridPathfinding
+    - type: Gravity
+      gravityShakeSound: !type:SoundPathSpecifier
+        path: /Audio/Effects/alert.ogg
+      inherent: True
+      enabled: True
+    - type: DecalGrid
+      chunkCollection:
+        version: 2
+        nodes: []
+    - type: LoadedMap
+    - type: GravityShake
+      shakeTimes: 10
+- proto: LadderTopMetalRusted
+  entities:
+  - uid: 2
+    components:
+    - type: Transform
+      pos: -20.5,-10.5
+      parent: 1
+    - type: Warper
+      location: house_ladder_down
+    - type: Fixtures
+      fixtures: {}
+    - type: WarpPoint
+      location: house_ladder_up
+...
