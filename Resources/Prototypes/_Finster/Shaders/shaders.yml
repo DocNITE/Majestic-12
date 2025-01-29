@@ -37,3 +37,8 @@
   id: Starfield
   kind: source
   path: "/Textures/_Finster/Shaders/starfield.swsl"
+
+- type: shader
+  id: ZLayer
+  kind: source
+  path: "/Textures/_Finster/Shaders/zlayer.swsl"

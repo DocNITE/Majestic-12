@@ -20,4 +20,11 @@ public sealed partial class CCVars
         CVarDef.Create("launch.shader_viewer", false, CVar.CLIENTONLY);
 
     #endregion
+
+    # region Z Levels
+
+    public static readonly CVarDef<bool> ZLayersBackgroundShader =
+        CVarDef.Create("zlayers.background_shader", true, CVar.CLIENT | CVar.REPLICATED);
+
+    # endregion
 }

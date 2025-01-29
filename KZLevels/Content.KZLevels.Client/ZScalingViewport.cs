@@ -19,6 +19,7 @@ using Robust.Shared.IoC;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Maths;
+using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
 using Robust.Shared.ViewVariables;
 using SixLabors.ImageSharp.PixelFormats;
@@ -35,10 +36,12 @@ public sealed class ZScalingViewport : Control, IViewportControl
     [Dependency] private readonly IEntityManager _entityManager = default!;
     [Dependency] private readonly IInputManager _inputManager = default!;
     [Dependency] private readonly IMapManager _mapManager = default!;
+    //[Dependency] private readonly IPrototypeManager _prototypeManager = default!;
     private ZStackSystem? _zStack = default!;
 
     // Drawing Shader
     public ShaderInstance? Shader;
+    //public ShaderInstance ZLayerShader;
 
     // Internal viewport creation is deferred.
     private IClydeViewport? _viewport;
@@ -137,6 +140,8 @@ public sealed class ZScalingViewport : Control, IViewportControl
     {
         IoCManager.InjectDependencies(this);
         RectClipContent = true;
+
+        //ZLayerShader = _prototypeManager.Index<ShaderPrototype>("ZLayer").InstanceUnique();
     }
 
     protected override void KeyBindDown(GUIBoundKeyEventArgs args)
@@ -164,6 +169,9 @@ public sealed class ZScalingViewport : Control, IViewportControl
         EnsureViewportCreated();
 
         DebugTools.AssertNotNull(_viewport);
+
+        var drawBox = GetDrawBox();
+        var drawBoxGlobal = drawBox.Translated(GlobalPixelPosition);
 
         if (_eye is not null)
         {
@@ -196,7 +204,9 @@ public sealed class ZScalingViewport : Control, IViewportControl
                     if (toDraw != id)
                     {
                         var preivousFov = SetEyeFov(_viewport!.Eye, false); // Remove black fov area
+                        //handle.UseShader(ZLayerShader);
                         _viewport!.Render();
+                        //handle.UseShader(null);
                         SetEyeFov(_viewport!.Eye, preivousFov); // Remove black fov area
                     }
                     else
@@ -237,8 +247,6 @@ public sealed class ZScalingViewport : Control, IViewportControl
             _queuedScreenshots.Clear();
         }
 
-        var drawBox = GetDrawBox();
-        var drawBoxGlobal = drawBox.Translated(GlobalPixelPosition);
         _viewport!.RenderScreenOverlaysBelow(handle, this, drawBoxGlobal);
         handle.DrawTextureRect(_viewport.RenderTarget.Texture, drawBox);
         _viewport.RenderScreenOverlaysAbove(handle, this, drawBoxGlobal);

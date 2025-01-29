@@ -37,8 +37,6 @@ public sealed partial class ZDefinedStackComponent : Component
 
 //TODO:
 /*
-ВАЖНО - Нужно сделать тестовые уровни для дебаг карты.
-И их же залить в папку мапсы.
 
 Потом обязательно нужен сделать темплейт уровень
 
