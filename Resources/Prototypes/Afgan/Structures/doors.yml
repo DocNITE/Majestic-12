@@ -1,0 +1,97 @@
+- type: entity
+  id: BaseMetallDoorAfgan
+  parent: BaseStructure
+  name: metall door
+  description: A door, where will it lead?
+  components:
+  - type: InteractionOutline
+  - type: Sprite
+    sprite: Afgan/Structures/Doors/metal_door.rsi
+    layers:
+    - state: closed
+      map: ["enum.DoorVisualLayers.Base"]
+  - type: AnimationPlayer
+  - type: Physics
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.49,-0.49,0.49,0.49"
+        density: 100
+        mask:
+        - FullTileMask
+        layer:
+        - AirlockLayer
+  - type: Door
+    bumpOpen: false
+    clickOpen: true
+    canCrush: false
+    closeTimeOne: 0.2
+    closeTimeTwo: 0.6
+    openTimeOne: 0.6
+    openTimeTwo: 0.2
+    openingAnimationTime: 1.2
+    closingAnimationTime: 1.2
+    openSound:
+      path: /Audio/Afgan/Structues/stonedoor_openclose.ogg
+    closeSound:
+      path: /Audio/Afgan/Structues/stonedoor_openclose.ogg
+  - type: Appearance
+  - type: Airtight
+  - type: Damageable
+    damageContainer: Inorganic
+    damageModifierSet: Metallic
+  - type: RCDDeconstructable
+    cost: 6
+    delay: 6
+    fx: EffectRCDDeconstruct6
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 200
+      behaviors:
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+  - type: IconSmooth
+    key: walls
+    mode: NoSprite
+  - type: Occluder
+  - type: BlockWeather
+  - type: NavMapDoor
+
+- type: entity
+  id: WoodDoorAfgan
+  name: wooden door
+  parent: BaseMaterialDoorNavMap
+  suffix: afgan14
+  description: A door, where will it lead?
+  components:
+  - type: Sprite
+    sprite: Afgan/Structures/Doors/wood_door.rsi
+    layers:
+    - state: closed
+      map: ["enum.DoorVisualLayers.Base"]
+  - type: Door
+    bumpOpen: false
+    clickOpen: true
+    closeTimeOne: 0.2
+    closeTimeTwo: 0.6
+    openTimeOne: 0.6
+    openTimeTwo: 0.2
+    openSound:
+      path: /Audio/Afgan/Structues/door_open.ogg
+    closeSound:
+      path: /Audio/Afgan/Structues/door_close.ogg
+  - type: Damageable
+    damageContainer: Inorganic
+    damageModifierSet: Wood
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 100
+      behaviors:
+      - !type:DoActsBehavior
+        acts: ["Destruction"]

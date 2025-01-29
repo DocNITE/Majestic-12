@@ -1,0 +1,113 @@
+- type: entity
+  parent: BaseWall
+  id: WallStal
+  name: ржавая стена
+  description: страрая, дряхлая, ржавая, стальная стенка.
+  suffix: afgan14
+  components:
+  - type: Tag
+    tags:
+      - Wall
+  - type: Sprite
+    sprite: Afgan/Structures/Walls/shit_wall.rsi
+  - type: Icon
+    sprite: Afgan/Structures/Walls/shit_wall.rsi
+  - type: RCDDeconstructable
+    cost: 6
+    delay: 8
+    fx: EffectRCDDeconstruct8
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 200
+      behaviors:
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          Girder:
+            min: 1
+            max: 1
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+  - type: IconSmooth
+    key: bricks
+    base: brick
+
+- type: entity
+  parent: BaseWall
+  id: WallSolidAfgan
+  name: solid wall
+  suffix: afgan14
+  components:
+  - type: Tag
+    tags:
+      - Wall
+  - type: Sprite
+    sprite: Afgan/Structures/Walls/solid.rsi
+  - type: Icon
+    sprite: Afgan/Structures/Walls/solid.rsi
+  - type: RCDDeconstructable
+    cost: 6
+    delay: 8
+    fx: EffectRCDDeconstruct8
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 400
+      behaviors:
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalSlam
+    - trigger:
+        !type:DamageTrigger
+        damage: 200
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalSlam
+      - !type:ChangeConstructionNodeBehavior
+        node: girder
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+  - type: IconSmooth
+    key: walls
+    base: solid
+
+- type: entity
+  parent: BaseWall
+  id: WallWoodAfgan
+  name: wood wall
+  suffix: afgan14
+  components:
+  - type: Sprite
+    sprite: Afgan/Structures/Walls/wood.rsi
+  - type: Icon
+    sprite: Afgan/Structures/Walls/wood.rsi
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 300
+      behaviors:
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+      - !type:PlaySoundBehavior
+        sound:
+          collection: WoodDestroyHeavy
+    - trigger:
+        !type:DamageTrigger
+        damage: 150
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: WoodDestroyHeavy
+      - !type:ChangeConstructionNodeBehavior
+        node: girder
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+  - type: IconSmooth
+    key: woods
+    base: wood
