@@ -1,10 +1,16 @@
 namespace Content.Shared.TimeCycle;
 
 [RegisterComponent]
-public sealed partial class TimeCycleComponent : Component
+public sealed partial class TimeCycleTrackerComponent : Component
 {
     // Delayed time, before minute have been passed
     public TimeSpan? DelayTime;
+
+    /// <summary>
+    /// Should be used for linking maps, where we want use the save Time and colors
+    /// </summary>
+    [DataField]
+    public string? TrackerId;
 
     [DataField]
     public bool SpeedUp;

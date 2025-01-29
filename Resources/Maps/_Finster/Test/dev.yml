@@ -191,8 +191,11 @@ entities:
     - type: MovedGrids
     - type: Broadphase
     - type: OccluderTree
-    - type: TimeCycle
+    - type: TimeCycleTracker
+      trackerId: "finster_dev_time"
       minuteDuration: 1
+    - type: TimeCycleMember
+      trackerId: "finster_dev_time"
     - type: MapLight
     - type: Biome
       forcedMarkerLayers: []

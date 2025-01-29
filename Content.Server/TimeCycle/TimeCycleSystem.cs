@@ -2,6 +2,7 @@ using Robust.Shared.Timing;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Map.Components;
 using Content.Shared.TimeCycle;
+using System.Linq;
 
 namespace Content.Server.TimeCycle;
 
@@ -15,15 +16,40 @@ public sealed partial class TimeCycleSystem : EntitySystem
         base.Initialize();
     }
 
+    public bool TryFindMembers(string id, out List<EntityUid> members)
+    {
+        var entMan = IoCManager.Resolve<IEntityManager>();
+        members = new List<EntityUid>();
+
+        var query = EntityQueryEnumerator<TimeCycleMemberComponent>();
+
+        while (query.MoveNext(out var mapid, out var timeComp))
+        {
+            if (timeComp.TrackerId == id)
+                members.Add(mapid);
+        }
+
+        if (members is not null)
+            return true;
+        else
+            return false;
+    }
+
     public override void Update(float frameTime)
     {
         var curTime = _gameTiming.CurTime;
-        var query = EntityQueryEnumerator<TimeCycleComponent, MapLightComponent>();
+        var query = EntityQueryEnumerator<TimeCycleTrackerComponent>();
 
-        while (query.MoveNext(out var mapid, out var timeComp, out var mapLightComp))
+        while (query.MoveNext(out var _, out var timeComp))
         {
             if (timeComp.Paused
                 || curTime < timeComp.DelayTime)
+                continue;
+
+            if (timeComp.TrackerId == null)
+                continue;
+
+            if (!TryFindMembers(timeComp.TrackerId, out var members))
                 continue;
 
             // Should be used for developing time palletes or for debuging
@@ -33,14 +59,20 @@ public sealed partial class TimeCycleSystem : EntitySystem
             // Pass minute of map time
             timeComp.CurrentTime += TimeSpan.FromMinutes(1);
 
-            // Change ambient color
-            UpdateAmbientColor(mapid, timeComp, mapLightComp);
+            // Change ambient color for all members maps
+            foreach (var mapMemberUid in members)
+            {
+                if (!TryComp<MapLightComponent>(mapMemberUid, out var mapLightComp))
+                    continue;
+
+                UpdateAmbientColor(mapMemberUid, timeComp, mapLightComp);
+            }
         }
 
         base.Update(frameTime);
     }
 
-    private void UpdateAmbientColor(EntityUid mapid, TimeCycleComponent timeComp, MapLightComponent mapLightComp)
+    private void UpdateAmbientColor(EntityUid mapid, TimeCycleTrackerComponent timeComp, MapLightComponent mapLightComp)
     {
         if (!_prototypeManager.TryIndex(timeComp.PalettePrototype, out TimeCyclePalettePrototype? timeEntries)
             || timeEntries is null)
