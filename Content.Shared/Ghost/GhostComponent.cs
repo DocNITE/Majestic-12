@@ -82,6 +82,9 @@ public sealed partial class GhostComponent : Component
         }
     }
 
+    [DataField, AutoNetworkedField]
+    public bool EnableGhostOverlay = true;
+
     /// <summary>
     /// Ghost color
     /// </summary>

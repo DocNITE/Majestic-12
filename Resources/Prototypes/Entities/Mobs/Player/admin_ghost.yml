@@ -24,6 +24,9 @@
     context: "aghost"
   - type: Ghost
     canInteract: true
+    enableGhostOverlay: false
+  - type: Deaf
+    blockSounds: false
   - type: GhostHearing
   - type: Hands
   - type: ComplexInteraction

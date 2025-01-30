@@ -55,6 +55,7 @@
       - Ethereal
   - type: Input
     context: "ghost"
+  - type: Deaf
   - type: Examiner
     skipChecks: true
   - type: Ghost

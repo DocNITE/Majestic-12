@@ -1,3 +1,4 @@
+using Content.Shared.Ghost;
 using Content.Shared.Mobs;
 using Robust.Client.Graphics;
 using Robust.Client.Player;
@@ -79,6 +80,13 @@ public sealed class DamageOverlay : Overlay
 
         var time = (float) _timing.RealTime.TotalSeconds;
         var lastFrameTime = (float) _timing.FrameTime.TotalSeconds;
+
+        // If we in ghost role
+        if (_entityManager.TryGetComponent<GhostComponent>(_playerManager.LocalEntity, out var ghostComp))
+        {
+            DrawGrayscale(handle, viewport, ScreenTexture);
+            return;
+        }
 
         // If they just died then lerp out the white overlay.
         if (State != MobState.Dead)
@@ -254,12 +262,22 @@ public sealed class DamageOverlay : Overlay
 
         if (State == MobState.Dead && ScreenTexture != null)
         {
-            _greyscaleShader?.SetParameter("SCREEN_TEXTURE", ScreenTexture);
-            handle.UseShader(_greyscaleShader);
-            handle.DrawRect(viewport, Color.White);
+            DrawGrayscale(handle, viewport, ScreenTexture);
         }
 
         handle.UseShader(null);
+    }
+
+    private void DrawGrayscale(DrawingHandleWorld handle, Box2 viewport, Texture? screenTexture)
+    {
+        if (screenTexture is null)
+            return;
+
+        var oldShader = handle.GetShader();
+        _greyscaleShader?.SetParameter("SCREEN_TEXTURE", screenTexture);
+        handle.UseShader(_greyscaleShader);
+        handle.DrawRect(viewport, Color.White);
+        handle.UseShader(oldShader);
     }
 
     private float GetDiff(float value, float lastFrameTime)

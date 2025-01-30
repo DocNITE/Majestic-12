@@ -28,7 +28,7 @@ public sealed partial class ContentAudioSystem
 
     private void OnDeafMapInit(EntityUid uid, AudioComponent component, ref ComponentInit args)
     {
-        if (TryComp<DeafComponent>(_player.LocalEntity, out var comp))
+        if (TryComp<DeafComponent>(_player.LocalEntity, out var comp) && comp.BlockSounds)
             Audio.SetGain(uid, 0f, component);
     }
 }
