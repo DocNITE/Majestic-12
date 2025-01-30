@@ -1,0 +1,11 @@
+- type: soundCollection
+  id: DeathnetManSay
+  files:
+    - /Audio/_Finster/Voice/deathnet/man4.ogg
+    - /Audio/_Finster/Voice/deathnet/man2.ogg
+
+- type: soundCollection
+  id: DeathnetManExclaim
+  files:
+    - /Audio/_Finster/Voice/deathnet/man5.ogg
+    - /Audio/_Finster/Voice/deathnet/man1.ogg
