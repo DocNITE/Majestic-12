@@ -21,6 +21,15 @@
   moodChange: -3
   timeout: 180
 
+# FINSTER EDIT - Add negative effect when player was falled from Z level
+
+- type: moodEffect
+  id: MobFalled
+  moodChange: -4
+  timeout: 180
+
+# FINSTER EDIT END
+
 - type: moodEffect
   id: MobVomit
   moodChange: -3

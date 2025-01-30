@@ -120,6 +120,11 @@
   - type: LightningTarget
     priority: 2
     lightningExplode: false
+  - type: Falling
+    baseDamage:
+      types:
+        Blunt: 30
+
 
 # Used for mobs that can enter combat mode and can attack.
 - type: entity

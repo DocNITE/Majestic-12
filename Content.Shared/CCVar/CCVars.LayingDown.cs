@@ -5,7 +5,7 @@ namespace Content.Shared.CCVar;
 public sealed partial class CCVars
 {
     public static readonly CVarDef<bool> AutoGetUp =
-        CVarDef.Create("rest.auto_get_up", true, CVar.CLIENT | CVar.ARCHIVE | CVar.REPLICATED);
+        CVarDef.Create("rest.auto_get_up", false, CVar.CLIENT | CVar.ARCHIVE | CVar.REPLICATED);
 
     public static readonly CVarDef<bool> HoldLookUp =
         CVarDef.Create("rest.hold_look_up", false, CVar.CLIENT | CVar.ARCHIVE);
