@@ -28,7 +28,7 @@ public sealed partial class ZTransitionMarkerComponent : Component
     /// </summary>
     [ViewVariables(VVAccess.ReadWrite)]
     [DataField("Direction")]
-    private ZDirection _dir;
+    public ZDirection Dir;
 
     /// <summary>
     /// Map position of this marker
