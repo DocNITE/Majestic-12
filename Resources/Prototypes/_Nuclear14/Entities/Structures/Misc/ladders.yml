@@ -1,6 +1,7 @@
 - type: entity
   id: BaseLadder
   name: ladder
+  categories: [ HideSpawnMenu ]
   abstract: true
   placement:
     mode: SnapgridCenter
@@ -21,26 +22,35 @@
     tags:
       - Structure
   - type: InteractionOutline
-  - type: Warper
+  #- type: Warper
+  - type: ZTransitionMarker
+  - type: ZLadder
+  #- type: ZLadderAutoLink
 
 # SS13 Sprites
 - type: entity
   parent: BaseLadder
   id: LadderTop
   suffix: top
+  categories: [ HideSpawnMenu ]
   description: The top of a ladder. Use it to go down.
   components:
   - type: Sprite
     state: ladder_top
+  - type: ZTransitionMarker
+    directionStr: down
 
 - type: entity
   parent: BaseLadder
   id: LadderBottom
   suffix: bottom
+  categories: [ HideSpawnMenu ]
   description: The bottom of a ladder. Use it to go up.
   components:
   - type: Sprite
     state: ladder_bottom
+  - type: ZTransitionMarker
+    directionStr: up
   - type: Fixtures
     fixtures:
       fix1:
@@ -66,6 +76,17 @@
     state: bunker_open
 
 - type: entity
+  parent: LadderTopBunkerOpen
+  id: LadderAutoLinkTopBunkerOpen
+  name: bunker entrance
+  suffix: open, autolink
+  description: Looks like it leads down somewhere.
+  components:
+  - type: ZLadderAutoLink
+    otherSideProto: LadderBottomMetal
+    direction: down
+
+- type: entity
   parent: LadderTop
   id: LadderTopManholeOpen
   name: manhole
@@ -77,6 +98,17 @@
     state: manhole_open
 
 - type: entity
+  parent: LadderTopManholeOpen
+  id: LadderAutoLinkTopManholeOpen
+  name: manhole
+  suffix: open, autolink
+  description: Looks like it leads down somewhere.
+  components:
+  - type: ZLadderAutoLink
+    otherSideProto: LadderBottomMetal
+    direction: down
+
+- type: entity
   parent: LadderTop
   id: LadderSquareTop
   suffix: square
@@ -85,6 +117,16 @@
   - type: Sprite
     sprite: _Nuclear14/Structures/Misc/laddersms13.rsi
     state: ladder01
+
+- type: entity
+  parent: LadderSquareTop
+  id: LadderAutoLinkSquareTop
+  suffix: square, autolink
+  description: Looks like it leads down somewhere.
+  components:
+  - type: ZLadderAutoLink
+    otherSideProto: LadderSquareBottom
+    direction: down
 
 - type: entity
   parent: LadderBottom
@@ -110,6 +152,16 @@
 
 - type: entity
   parent: LadderSquareBottom
+  id: LadderAutoLinkSquareBottom
+  suffix: bottom, square, autolink
+  description: The bottom of a ladder. Use it to go up.
+  components:
+  - type: ZLadderAutoLink
+    otherSideProto: LadderSquareTop
+    direction: up
+
+- type: entity
+  parent: LadderSquareBottom
   id: LadderSquareMid
   suffix: mid, square
   description: The middle of a ladder. Up or down.
@@ -119,7 +171,7 @@
     state: ladder11
 
 - type: entity
-  parent: BaseLadder
+  parent: LadderTop
   id: LadderRopeTop1
   suffix: rope, top
   name: climbing rope
@@ -130,7 +182,19 @@
     state: rope
 
 - type: entity
-  parent: BaseLadder
+  parent: LadderRopeTop1
+  id: LadderAutoLinkRopeTop1
+  suffix: rope, top, autolink
+  name: climbing rope
+  description: The top of a rope. Going down!
+  components:
+  - type: ZLadderAutoLink
+    otherSideProto: LadderRopeBottom1
+    direction: up
+
+
+- type: entity
+  parent: LadderBottom
   id: LadderRopeBottom1
   suffix: rope, bottom
   name: climbing rope
@@ -139,6 +203,18 @@
   - type: Sprite
     sprite: _Nuclear14/Structures/Misc/laddersms13.rsi
     state: rope_down
+
+- type: entity
+  parent: LadderRopeBottom1
+  id: LadderAutoLinkRopeBottom1
+  suffix: rope, bottom, autolink
+  name: climbing rope
+  description: The bottom of a rope. Going up!
+  components:
+  - type: ZLadderAutoLink
+    otherSideProto: LadderRopeTop1
+    direction: up
+
 
 - type: entity
   parent: BaseStructure
@@ -160,6 +236,19 @@
 
 - type: entity
   parent: LadderTopBunkerClosed
+  id: LadderAutoLinkTopBunkerClosed
+  name: bunker entrance
+  suffix: closed, autolink
+  description: A closed up entrance to a bunker.
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: ZLadderAutoLink
+    otherSideProto: LadderBottomMetal
+    direction: down
+
+- type: entity
+  parent: LadderTopBunkerClosed
   id: LadderTopManholeClosed
   name: manhole cover
   suffix: closed
@@ -168,10 +257,21 @@
   - type: Sprite
     state: manhole_closed
 
+- type: entity
+  parent: LadderTopManholeClosed
+  id: LadderAutoLinkTopManholeClosed
+  name: manhole cover
+  suffix: closed
+  description: A closed up entrance to a bunker.
+  components:
+  - type: ZLadderAutoLink
+    otherSideProto: LadderBottomMetal
+    direction: down
+
 # SS14 Sprites
 # Tops
 - type: entity
-  parent: BaseLadder
+  parent: LadderTop
   id: LadderTopMetal
   suffix: top, metal, painted
   description: The top of a ladder. Use it to go down.
@@ -186,6 +286,16 @@
     available:
       - enum.DamageStateVisualLayers.Base:
           paint_1: Rainbow
+
+- type: entity
+  parent: LadderTopMetal
+  id: LadderAutoLinkTopMetal
+  suffix: top, metal, painted, autolink
+  description: The top of a ladder. Use it to go down.
+  components:
+  - type: ZLadderAutoLink
+    otherSideProto: LadderBottomMetal
+    direction: down
 
 - type: entity
   parent: LadderTopMetal
@@ -204,6 +314,16 @@
           paint_2: Rainbow
 
 - type: entity
+  parent: LadderTopMetalPaint2
+  id: LadderAutoLinkTopMetalPaint2
+  suffix: top, metal, flaking, autolink
+  description: The top of a ladder. Use it to go down.
+  components:
+  - type: ZLadderAutoLink
+    otherSideProto: LadderBottomMetalPaint2
+    direction: down
+
+- type: entity
   parent: LadderTopMetal
   id: LadderTopMetalPaint3
   suffix: top, metal, flaked
@@ -220,6 +340,16 @@
           paint_3: Rainbow
 
 - type: entity
+  parent: LadderTopMetalPaint3
+  id: LadderAutoLinkTopMetalPaint3
+  suffix: top, metal, flaked, autolink
+  description: The top of a ladder. Use it to go down.
+  components:
+  - type: ZLadderAutoLink
+    otherSideProto: LadderBottomMetalPaint3
+    direction: down
+
+- type: entity
   parent: LadderTopMetal
   id: LadderTopMetalRusted
   suffix: top, metal, rusted
@@ -231,6 +361,16 @@
     - state: rust
 
 - type: entity
+  parent: LadderTopMetalRusted
+  id: LadderAutoLinkTopMetalRusted
+  suffix: top, metal, rusted, autolink
+  description: The top of a ladder. Use it to go down. Rusty.
+  components:
+  - type: ZLadderAutoLink
+    otherSideProto: LadderBottomMetalRusted
+    direction: down
+
+- type: entity
   parent: LadderTopMetal
   id: LadderTopMetalDamaged
   suffix: top, metal
@@ -238,6 +378,16 @@
   components:
   - type: Sprite
     state: metal
+
+- type: entity
+  parent: LadderTopMetalDamaged
+  id: LadderAutoLinkTopMetalDamaged
+  suffix: top, metal, autolink
+  description: The top of a ladder. Use it to go down. This one looks damaged.
+  components:
+  - type: ZLadderAutoLink
+    otherSideProto: LadderBottomMetalDamaged
+    direction: down
 
 - type: entity
   parent: LadderTopMetal
@@ -249,6 +399,17 @@
   - type: Sprite
     state: rope
 
+- type: entity
+  parent: LadderTopRope
+  id: LadderAutoLinkTopRope
+  name: rope ladder
+  suffix: top, rope, autolink
+  description: The top of a ladder. Use it to go down.
+  components:
+  - type: ZLadderAutoLink
+    otherSideProto: LadderBottomRope
+    direction: down
+
 # Bottoms
 - type: entity
   parent: LadderBottom
@@ -259,6 +420,16 @@
   - type: Sprite
     sprite: _Nuclear14/Structures/Misc/ladder.rsi
     state: b_metal
+
+- type: entity
+  parent: LadderBottomMetal
+  id: LadderAutoLinkBottomMetal
+  suffix: bottom, metal, autolink
+  description: The bottom of a ladder. Use it to go up.
+  components:
+  - type: ZLadderAutoLink
+    otherSideProto: LadderTopMetal
+    direction: up
 
 - type: entity
   parent: LadderBottomMetal
@@ -277,6 +448,16 @@
           b_paint_1: Rainbow
 
 - type: entity
+  parent: LadderBottomMetalPaint1
+  id: LadderAutoLinkBottomMetalPaint1
+  suffix: bottom, metal, painted, autolink
+  description: The bottom of a ladder. Use it to go down.
+  components:
+  - type: ZLadderAutoLink
+    otherSideProto: LadderTopMetalPaint2
+    direction: up
+
+- type: entity
   parent: LadderBottomMetal
   id: LadderBottomMetalPaint2
   suffix: bottom, metal, flaking
@@ -291,6 +472,16 @@
     available:
       - enum.DamageStateVisualLayers.Base:
           b_paint_2: Rainbow
+
+- type: entity
+  parent: LadderBottomMetalPaint2
+  id: LadderAutoLinkBottomMetalPaint2
+  suffix: bottom, metal, flaking, autolink
+  description: The bottom of a ladder. Use it to go down.
+  components:
+  - type: ZLadderAutoLink
+    otherSideProto: LadderTopMetalPaint2
+    direction: up
 
 - type: entity
   parent: LadderBottomMetal
@@ -309,6 +500,16 @@
           b_paint_3: Rainbow
 
 - type: entity
+  parent: LadderBottomMetalPaint3
+  id: LadderAutoLinkBottomMetalPaint3
+  suffix: bottom, metal, flaked, autolink
+  description: The bottom of a ladder. Use it to go down.
+  components:
+  - type: ZLadderAutoLink
+    otherSideProto: LadderTopMetalPaint3
+    direction: up
+
+- type: entity
   parent: LadderBottomMetal
   id: LadderBottomMetalDamaged
   suffix: bottom
@@ -316,6 +517,16 @@
   components:
   - type: Sprite
     state: b_metal_damaged
+
+- type: entity
+  parent: LadderBottomMetalDamaged
+  id: LadderAutoLinkBottomMetalDamaged
+  suffix: bottom, autolink
+  description: The bottom of a ladder. Use it to go up. Looks damaged.
+  components:
+  - type: ZLadderAutoLink
+    otherSideProto: LadderTopMetalDamaged
+    direction: up
 
 - type: entity
   parent: LadderBottomMetal
@@ -329,6 +540,16 @@
     - state: b_rust
 
 - type: entity
+  parent: LadderBottomMetalRusted
+  id: LadderAutoLinkBottomMetalRusted
+  suffix: bottom, metal, rusted, autolink
+  description: The bottom of a ladder. Use it to go down. Rusty.
+  components:
+  - type: ZLadderAutoLink
+    otherSideProto: LadderTopMetalRusted
+    direction: up
+
+- type: entity
   parent: LadderBottomMetal
   id: LadderBottomRope
   name: rope ladder
@@ -339,6 +560,17 @@
     state: b_rope
 
 - type: entity
+  parent: LadderBottomRope
+  id: LadderAutoLinkBottomRope
+  name: rope ladder
+  suffix: bottom, rope, autolink
+  description: The bottom of a ladder. Use it to go down.
+  components:
+  - type: ZLadderAutoLink
+    otherSideProto: LadderTopRope
+    direction: up
+
+- type: entity
   parent: LadderBottomMetal
   id: LadderBottomRopeDamaged
   name: rope ladder
@@ -347,3 +579,14 @@
   components:
   - type: Sprite
     state: b_rope_damaged
+
+- type: entity
+  parent: LadderBottomRopeDamaged
+  id: LadderAutoLinkBottomRopeDamaged
+  name: rope ladder
+  suffix: bottom, rope, damaged, autolink
+  description: The bottom of a ladder. Use it to go down. Looks dangerous.
+  components:
+  - type: ZLadderAutoLink
+    otherSideProto: LadderTopRope
+    direction: up

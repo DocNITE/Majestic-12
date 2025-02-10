@@ -36,7 +36,16 @@ public sealed class ZTransitionSystem : EntitySystem
     {
         base.Initialize();
 
+        SubscribeLocalEvent<ZTransitionMarkerComponent, ComponentInit>(OnMarkerInit);
         SubscribeLocalEvent<ZTransitionMarkerComponent, ComponentStartup>(OnMarkerStartup);
+    }
+
+    private void OnMarkerInit(Entity<ZTransitionMarkerComponent> ent, ref ComponentInit args)
+    {
+        if (ent.Comp.DirStr == "down")
+            ent.Comp.Dir = Shared.Miscellaneous.ZDirection.Down;
+        else if (ent.Comp.DirStr == "up")
+            ent.Comp.Dir = Shared.Miscellaneous.ZDirection.Up;
     }
 
     private void OnMarkerStartup(Entity<ZTransitionMarkerComponent> ent, ref ComponentStartup args)

@@ -8,9 +8,9 @@
 
 namespace Content.KayMisaZlevels.Shared.Miscellaneous;
 
-public enum ZDirection : sbyte
+public enum ZDirection : byte
 {
-    Invalid = -1,
-    Up = 0,
-    Down = 1
+    Invalid = 0,
+    Up = 1,
+    Down = 2
 }

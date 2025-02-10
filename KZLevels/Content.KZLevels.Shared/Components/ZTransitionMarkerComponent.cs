@@ -27,8 +27,14 @@ public sealed partial class ZTransitionMarkerComponent : Component
     /// Direction this marker transitions an entity (Up or Down)
     /// </summary>
     [ViewVariables(VVAccess.ReadWrite)]
-    [DataField("Direction")]
+    [DataField("direction")]
     public ZDirection Dir;
+
+    /// <summary>
+    /// AHTUNG!: Used only for prototypes like ladders and stairs for define ZDirection Dir;
+    /// </summary>
+    [DataField("directionStr")]
+    public string DirStr = "down";
 
     /// <summary>
     /// Map position of this marker
