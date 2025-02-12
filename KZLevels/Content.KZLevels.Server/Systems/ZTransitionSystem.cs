@@ -30,7 +30,7 @@ public sealed class ZTransitionSystem : EntitySystem
 {
     [Dependency] private readonly SharedTransformSystem _transform = default!;
 
-    private List<Entity<ZTransitionMarkerComponent>> _markers = [];
+    //private List<Entity<ZTransitionMarkerComponent>> _markers = [];
 
     public override void Initialize()
     {
@@ -51,7 +51,7 @@ public sealed class ZTransitionSystem : EntitySystem
     private void OnMarkerStartup(Entity<ZTransitionMarkerComponent> ent, ref ComponentStartup args)
     {
         ent.Comp.Position = _transform.GetMapCoordinates(ent.Owner, Comp<TransformComponent>(ent.Owner));
-        _markers.Add(ent);
+        //_markers.Add(ent);
     }
 }
 

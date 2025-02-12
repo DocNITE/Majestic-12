@@ -1,4 +1,6 @@
 
+using Content.Shared.DoAfter;
+using Robust.Shared.Map;
 using Robust.Shared.Prototypes;
 
 namespace Content.Server._KMZLevels.ZTransition;
@@ -9,5 +11,9 @@ namespace Content.Server._KMZLevels.ZTransition;
 [RegisterComponent]
 public sealed partial class ZLadderComponent : Component
 {
-}
+    [DataField("delay")]
+    public float DoAfterDelay = 3f;
 
+    [DataField]
+    public bool UseDoAfter = true;
+}

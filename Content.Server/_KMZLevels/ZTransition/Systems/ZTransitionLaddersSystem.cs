@@ -1,9 +1,12 @@
 using Content.KayMisaZlevels.Server.Systems;
 using Content.KayMisaZlevels.Shared.Components;
 using Content.KayMisaZlevels.Shared.Miscellaneous;
+using Content.Server.DoAfter;
 using Content.Server.Ghost.Components;
 using Content.Server.Popups;
 using Content.Server.Warps;
+using Content.Shared._KMZLevels.ZTransition;
+using Content.Shared.DoAfter;
 using Content.Shared.Ghost;
 using Content.Shared.Interaction;
 using Content.Shared.Teleportation.Components;
@@ -28,6 +31,7 @@ public class ZTransitionLaddersSystem : EntitySystem
     [Dependency] private readonly LinkedEntitySystem _linkedEntitySystem = default!;
     [Dependency] private readonly TransformSystem _xform = default!;
     [Dependency] private readonly ZStackSystem _zStack = default!;
+    [Dependency] private readonly DoAfterSystem _doAfter = default!;
 
     private uint _nextKeyId = 0;
 
@@ -41,6 +45,19 @@ public class ZTransitionLaddersSystem : EntitySystem
 
         SubscribeLocalEvent<ZLadderAutoLinkComponent, ComponentInit>(OnAutoLinkInit);
         SubscribeLocalEvent<ZLadderAutoLinkComponent, MapInitEvent>(HandleMapInitialization);
+
+        SubscribeLocalEvent<ZLadderComponent, LadderMoveDoAfterEvent>(OnDoAfter);
+    }
+
+    private void OnDoAfter(Entity<ZLadderComponent> entity, ref LadderMoveDoAfterEvent args)
+    {
+        if (args.Handled || args.Cancelled ||
+            args.Used is null || args.Target is null)
+            return;
+
+        TryInteract((EntityUid) args.Used, args.User, (EntityUid) args.Target, doAftered: true);
+
+        args.Handled = true;
     }
 
     private void OnShutdown(Entity<ZLadderComponent> entity, ref ComponentShutdown args)
@@ -120,7 +137,7 @@ public class ZTransitionLaddersSystem : EntitySystem
         var verb = new Verb()
         {
             Text = Loc.GetString("ladder-verb-use"),
-            Act = () => TryInteract(uid, component, args.User, args.Target),
+            Act = () => TryInteract(uid, args.User, args.Target, component),
         };
 
         args.Verbs.Add(verb);
@@ -128,10 +145,20 @@ public class ZTransitionLaddersSystem : EntitySystem
 
     private void OnInteractHand(EntityUid uid, ZLadderComponent component, InteractHandEvent args)
     {
-        TryInteract(uid, component, args.User, args.Target);
+        TryInteract(uid, args.User, args.Target, component);
     }
 
-    public void TryInteract(EntityUid uid, ZLadderComponent component, EntityUid user, EntityUid target)
+    /// <summary>
+    /// FIXME: I don't know how DoAfterEvent works, so i use <seealso cref="SimpleDoAfterEvent"/> with three uid of entity.
+    /// I don't think repeating logic is bad, but i think it should be refactoring with using better method of transition character
+    /// with DoAfter progress bar
+    /// </summary>
+    /// <param name="uid">Ladder object</param>
+    /// <param name="user">Character or another entity</param>
+    /// <param name="target">Ladder...</param>
+    /// <param name="component"></param>
+    /// <param name="doAftered">Used only from OnDoAfter callback</param>
+    private void TryInteract(EntityUid uid, EntityUid user, EntityUid target, ZLadderComponent? component = null, bool doAftered = false)
     {
         if (!TryComp<LinkedEntityComponent>(uid, out var linkComp) || linkComp.LinkedEntities.Count <= 0)
         {
@@ -141,7 +168,7 @@ public class ZTransitionLaddersSystem : EntitySystem
 
         var dest = linkComp.LinkedEntities.First();
 
-        var entMan = IoCManager.Resolve<IEntityManager>();
+        var entMan = EntityManager;
         TransformComponent? destXform;
         entMan.TryGetComponent<TransformComponent>(dest, out destXform);
         if (destXform is null)
@@ -163,16 +190,41 @@ public class ZTransitionLaddersSystem : EntitySystem
             }
         }
 
-        var xform = entMan.GetComponent<TransformComponent>(user);
-        xform.Coordinates = destXform.Coordinates;
-        xform.AttachToGridOrMap();
-        if (entMan.TryGetComponent(uid, out PhysicsComponent? phys))
+        // If don't doAfter, set position directrly (or, if doAftered)
+        if (doAftered || component is not null && !component.UseDoAfter)
         {
-            _physics.SetLinearVelocity(uid, Vector2.Zero);
+            SetWorldPosition(user, destXform.Coordinates);
+            return;
         }
+
+        if (component is null)
+            return;
+
+        var doAfterEventArgs = new DoAfterArgs(EntityManager, user,
+                component.DoAfterDelay, new LadderMoveDoAfterEvent(),
+                target, target: target, used: uid)
+        {
+            BreakOnMove = true,
+            BreakOnDamage = true,
+            NeedHand = true,
+            BreakOnWeightlessMove = true,
+        };
+
+        _doAfter.TryStartDoAfter(doAfterEventArgs);
     }
 
-    public void SendPopupEntity(EntityUid user, EntityUid target)
+    private void SetWorldPosition(EntityUid user, EntityCoordinates coordinates)
+    {
+        var xform = EntityManager.GetComponent<TransformComponent>(user);
+        xform.Coordinates = coordinates;
+        xform.AttachToGridOrMap();
+        //if (EntityManager.TryGetComponent(user, out PhysicsComponent? phys))
+        //{
+        //    _physics.SetLinearVelocity(user, Vector2.Zero);
+        //}
+    }
+
+    private void SendPopupEntity(EntityUid user, EntityUid target)
     {
         _popupSystem.PopupEntity(Loc.GetString("ladder-goes-nowhere", ("ladder", target)), user, Filter.Entities(user), true);
     }

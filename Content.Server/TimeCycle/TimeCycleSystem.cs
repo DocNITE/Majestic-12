@@ -49,6 +49,7 @@ public sealed partial class TimeCycleSystem : EntitySystem
             if (timeComp.TrackerId == null)
                 continue;
 
+            // TODO: Rewrite to LinkedEntitiesComponent for better performance
             if (!TryFindMembers(timeComp.TrackerId, out var members))
                 continue;
 
