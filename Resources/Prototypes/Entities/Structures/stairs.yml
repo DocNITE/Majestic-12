@@ -1,5 +1,51 @@
 - type: entity
+  id: StairsBase
+  name: stairs
+  suffix: autolinking(Test)
+  categories: [ HideSpawnMenu ]
+  abstract: true
+  description: These look like they'll take you places.
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: Clickable
+  - type: InteractionOutline
+  - type: Transform
+    anchored: true
+  - type: Physics
+    bodyType: Static
+  - type: Tag
+    tags:
+      - Structure
+  - type: Fixtures
+    fixtures:
+      upFixture:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.5,0.25,0.5,0.5"
+        mask:
+        - FullTileMask
+        layer:
+        - WallLayer
+        hard: false
+      downFixture:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.5,-0.25,0.5,-0.5"
+        mask:
+        - FullTileMask
+        layer:
+        - WallLayer
+        hard: false
+  #- type: Portal
+  #  canTeleportToOtherMaps: true
+  #  randomTeleport: false
+  #- type: PortalAutoLink
+
+
+- type: entity
   id: Stairs
+  parent: StairsBase
   name: stairs
   suffix: Steel
   description: The greatest invention since rocket-propelled grenades.
@@ -59,7 +105,7 @@
 - type: entity
   id: StairStageWhite
   parent: Stairs
-  suffix: White, stage 
+  suffix: White, stage
   components:
   - type: Sprite
     sprite: Structures/stairs.rsi
