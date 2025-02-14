@@ -7,7 +7,7 @@ namespace Content.Server._KMZLevels.ZTransition;
 /// Enables the automatic linking of entities by matching keys during searches.
 /// </summary>
 [RegisterComponent]
-public sealed partial class ZLadderAutoLinkComponent : Component
+public sealed partial class ZTransitionAutoLinkComponent : Component
 {
     /// <summary>
     /// A key used to locate another entity with a matching link in the world.

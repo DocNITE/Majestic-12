@@ -1,8 +1,3 @@
-
-using Content.Shared.DoAfter;
-using Robust.Shared.Map;
-using Robust.Shared.Prototypes;
-
 namespace Content.Server._KMZLevels.ZTransition;
 
 /// <summary>

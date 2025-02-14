@@ -25,7 +25,7 @@
   #- type: Warper
   - type: ZTransitionMarker
   - type: ZLadder
-  #- type: ZLadderAutoLink
+  #- type: ZTransitionAutoLink
 
 # SS13 Sprites
 - type: entity
@@ -82,7 +82,7 @@
   suffix: open, autolink
   description: Looks like it leads down somewhere.
   components:
-  - type: ZLadderAutoLink
+  - type: ZTransitionAutoLink
     otherSideProto: LadderBottomMetal
     direction: down
 
@@ -104,7 +104,7 @@
   suffix: open, autolink
   description: Looks like it leads down somewhere.
   components:
-  - type: ZLadderAutoLink
+  - type: ZTransitionAutoLink
     otherSideProto: LadderBottomMetal
     direction: down
 
@@ -124,7 +124,7 @@
   suffix: square, autolink
   description: Looks like it leads down somewhere.
   components:
-  - type: ZLadderAutoLink
+  - type: ZTransitionAutoLink
     otherSideProto: LadderSquareBottom
     direction: down
 
@@ -156,7 +156,7 @@
   suffix: bottom, square, autolink
   description: The bottom of a ladder. Use it to go up.
   components:
-  - type: ZLadderAutoLink
+  - type: ZTransitionAutoLink
     otherSideProto: LadderSquareTop
     direction: up
 
@@ -188,7 +188,7 @@
   name: climbing rope
   description: The top of a rope. Going down!
   components:
-  - type: ZLadderAutoLink
+  - type: ZTransitionAutoLink
     otherSideProto: LadderRopeBottom1
     direction: up
 
@@ -211,7 +211,7 @@
   name: climbing rope
   description: The bottom of a rope. Going up!
   components:
-  - type: ZLadderAutoLink
+  - type: ZTransitionAutoLink
     otherSideProto: LadderRopeTop1
     direction: up
 
@@ -243,7 +243,7 @@
   placement:
     mode: SnapgridCenter
   components:
-  - type: ZLadderAutoLink
+  - type: ZTransitionAutoLink
     otherSideProto: LadderBottomMetal
     direction: down
 
@@ -264,7 +264,7 @@
   suffix: closed
   description: A closed up entrance to a bunker.
   components:
-  - type: ZLadderAutoLink
+  - type: ZTransitionAutoLink
     otherSideProto: LadderBottomMetal
     direction: down
 
@@ -293,7 +293,7 @@
   suffix: top, metal, painted, autolink
   description: The top of a ladder. Use it to go down.
   components:
-  - type: ZLadderAutoLink
+  - type: ZTransitionAutoLink
     otherSideProto: LadderBottomMetal
     direction: down
 
@@ -319,7 +319,7 @@
   suffix: top, metal, flaking, autolink
   description: The top of a ladder. Use it to go down.
   components:
-  - type: ZLadderAutoLink
+  - type: ZTransitionAutoLink
     otherSideProto: LadderBottomMetalPaint2
     direction: down
 
@@ -345,7 +345,7 @@
   suffix: top, metal, flaked, autolink
   description: The top of a ladder. Use it to go down.
   components:
-  - type: ZLadderAutoLink
+  - type: ZTransitionAutoLink
     otherSideProto: LadderBottomMetalPaint3
     direction: down
 
@@ -366,7 +366,7 @@
   suffix: top, metal, rusted, autolink
   description: The top of a ladder. Use it to go down. Rusty.
   components:
-  - type: ZLadderAutoLink
+  - type: ZTransitionAutoLink
     otherSideProto: LadderBottomMetalRusted
     direction: down
 
@@ -385,7 +385,7 @@
   suffix: top, metal, autolink
   description: The top of a ladder. Use it to go down. This one looks damaged.
   components:
-  - type: ZLadderAutoLink
+  - type: ZTransitionAutoLink
     otherSideProto: LadderBottomMetalDamaged
     direction: down
 
@@ -406,7 +406,7 @@
   suffix: top, rope, autolink
   description: The top of a ladder. Use it to go down.
   components:
-  - type: ZLadderAutoLink
+  - type: ZTransitionAutoLink
     otherSideProto: LadderBottomRope
     direction: down
 
@@ -427,7 +427,7 @@
   suffix: bottom, metal, autolink
   description: The bottom of a ladder. Use it to go up.
   components:
-  - type: ZLadderAutoLink
+  - type: ZTransitionAutoLink
     otherSideProto: LadderTopMetal
     direction: up
 
@@ -453,7 +453,7 @@
   suffix: bottom, metal, painted, autolink
   description: The bottom of a ladder. Use it to go down.
   components:
-  - type: ZLadderAutoLink
+  - type: ZTransitionAutoLink
     otherSideProto: LadderTopMetalPaint2
     direction: up
 
@@ -479,7 +479,7 @@
   suffix: bottom, metal, flaking, autolink
   description: The bottom of a ladder. Use it to go down.
   components:
-  - type: ZLadderAutoLink
+  - type: ZTransitionAutoLink
     otherSideProto: LadderTopMetalPaint2
     direction: up
 
@@ -505,7 +505,7 @@
   suffix: bottom, metal, flaked, autolink
   description: The bottom of a ladder. Use it to go down.
   components:
-  - type: ZLadderAutoLink
+  - type: ZTransitionAutoLink
     otherSideProto: LadderTopMetalPaint3
     direction: up
 
@@ -524,7 +524,7 @@
   suffix: bottom, autolink
   description: The bottom of a ladder. Use it to go up. Looks damaged.
   components:
-  - type: ZLadderAutoLink
+  - type: ZTransitionAutoLink
     otherSideProto: LadderTopMetalDamaged
     direction: up
 
@@ -545,7 +545,7 @@
   suffix: bottom, metal, rusted, autolink
   description: The bottom of a ladder. Use it to go down. Rusty.
   components:
-  - type: ZLadderAutoLink
+  - type: ZTransitionAutoLink
     otherSideProto: LadderTopMetalRusted
     direction: up
 
@@ -566,7 +566,7 @@
   suffix: bottom, rope, autolink
   description: The bottom of a ladder. Use it to go down.
   components:
-  - type: ZLadderAutoLink
+  - type: ZTransitionAutoLink
     otherSideProto: LadderTopRope
     direction: up
 
@@ -587,6 +587,6 @@
   suffix: bottom, rope, damaged, autolink
   description: The bottom of a ladder. Use it to go down. Looks dangerous.
   components:
-  - type: ZLadderAutoLink
+  - type: ZTransitionAutoLink
     otherSideProto: LadderTopRope
     direction: up
