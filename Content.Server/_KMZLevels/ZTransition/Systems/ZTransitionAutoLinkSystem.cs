@@ -20,23 +20,11 @@ public class ZTransitionAutoLinkSystem : EntitySystem
         base.Initialize();
 
         SubscribeLocalEvent<ZTransitionAutoLinkComponent, ComponentInit>(OnAutoLinkInit);
-        SubscribeLocalEvent<ZTransitionAutoLinkComponent, ComponentShutdown>(OnAutoLinkShutdown);
         SubscribeLocalEvent<ZTransitionAutoLinkComponent, MapInitEvent>(HandleMapInitialization);
     }
 
     private void OnAutoLinkInit(Entity<ZTransitionAutoLinkComponent> entity, ref ComponentInit args)
     {
-    }
-
-    private void OnAutoLinkShutdown(Entity<ZTransitionAutoLinkComponent> entity, ref ComponentShutdown args)
-    {
-        if (!TryComp<LinkedEntityComponent>(entity, out var linkComp) || linkComp.LinkedEntities.Count <= 0)
-            return;
-
-        var linkedEntity = linkComp.LinkedEntities.First();
-
-        if (_linkedEntitySystem.TryUnlink(entity, linkedEntity))
-            Del(linkedEntity);
     }
 
     private void HandleMapInitialization(Entity<ZTransitionAutoLinkComponent> entity, ref MapInitEvent eventArgs)

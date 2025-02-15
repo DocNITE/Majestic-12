@@ -21,15 +21,30 @@ public class ZTransitionLaddersSystem : EntitySystem
 {
     [Dependency] private readonly PopupSystem _popupSystem = default!;
     [Dependency] private readonly DoAfterSystem _doAfter = default!;
+    [Dependency] private readonly LinkedEntitySystem _linkedEntitySystem = default!;
 
     private uint _nextKeyId = 0;
 
     public override void Initialize()
     {
         base.Initialize();
+
+        SubscribeLocalEvent<ZLadderComponent, ComponentShutdown>(OnShutdown);
+
         SubscribeLocalEvent<ZLadderComponent, InteractHandEvent>(OnInteractHand);
         SubscribeLocalEvent<ZLadderComponent, GetVerbsEvent<Verb>>(AddVerbs);
         SubscribeLocalEvent<ZLadderComponent, LadderMoveDoAfterEvent>(OnDoAfter);
+    }
+
+    private void OnShutdown(Entity<ZLadderComponent> entity, ref ComponentShutdown args)
+    {
+        if (!TryComp<LinkedEntityComponent>(entity, out var linkComp) || linkComp.LinkedEntities.Count <= 0)
+            return;
+
+        var linkedEntity = linkComp.LinkedEntities.First();
+
+        if (_linkedEntitySystem.TryUnlink(entity, linkedEntity))
+            Del(linkedEntity);
     }
 
     private void OnDoAfter(Entity<ZLadderComponent> entity, ref LadderMoveDoAfterEvent args)
