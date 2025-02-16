@@ -24,6 +24,33 @@
   maxCooldownTime: 0
   priority: 1
 
+# General areas
+- type: ambientMusic
+  id: Maintenance
+  sound:
+    params:
+      volume: -10
+    collection: AmbienceMaintenance
+  fadeIn: true
+  interruptable: true
+  rules: NearMaintenance
+  minCooldownTime: 0
+  maxCooldownTime: 0
+  priority: 4
+
+#- type: ambientMusic
+#  id: Engineering
+#  sound:
+#    params:
+#      volume: -10
+#    collection: AmbienceEngineering
+#  fadeIn: true
+#  interruptable: true
+#  rules: NearEngineering
+#  minCooldownTime: 0
+#  maxCooldownTime: 0
+#  priority: 3
+
 ## Combat Mode Theme
 - type: ambientMusic
   id: CombatMode
@@ -75,6 +102,16 @@
     - /Audio/_Finster/Ambience/stalker_red_forest.ogg
 
 - type: soundCollection
+  id: AmbienceMaintenance
+  files:
+    - /Audio/_Finster/Ambience/H3-Season-of-The-Witch.ogg
+
+- type: soundCollection
+  id: AmbienceEngineering
+  files:
+    - /Audio/_Finster/Ambience/ProtoU-Fragmented.ogg
+
+- type: soundCollection
   id: AmbienceCombatMode
   files:
     - /Audio/_Finster/Ambience/DreamWeb-Like-Killing-Hitler.ogg
@@ -119,20 +156,28 @@
 - type: rules
   id: NearEngineering
   rules:
+    - !type:NearbyMusicSourceRule
+      state: false
+    - !type:CombatModeRule
+      state: false
     - !type:NearbyAccessRule
       access:
         - Engineering
-      range: 3
+      range: 10
 
 - type: rules
   id: NearMaintenance
   rules:
+    - !type:NearbyMusicSourceRule
+      state: false
+    - !type:CombatModeRule
+      state: false
     - !type:NearbyTilesPercentRule
       ignoreAnchored: true
       percent: 0.25
       tiles:
         - Plating
-      range: 2
+      range: 8
 
 - type: rules
   id: NearTrain
@@ -142,7 +187,7 @@
       percent: 0.05
       tiles:
         - TrainLattice
-      range: 4
+      range: 12
 
 - type: rules
   id: NearMedical
@@ -152,7 +197,7 @@
       percent: 0.5
       tiles:
       - FloorWhite
-      range: 3
+      range: 10
 
 - type: rules
   id: NearPrayable
@@ -161,7 +206,7 @@
       anchored: true
       components:
         - type: Prayable
-      range: 5
+      range: 12
 
 - type: rules
   id: NearMorgue
@@ -171,7 +216,7 @@
       count: 2
       components:
         - type: Morgue
-      range: 3
+      range: 6
 
 - type: rules
   id: NearSpookyFog
@@ -181,4 +226,4 @@
       whitelist:
         tags:
           - SpookyFog
-      range: 4
+      range: 10
